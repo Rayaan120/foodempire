@@ -83,39 +83,36 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 animate-slide-down">
-          <div className="px-4 py-6 space-y-4">
-            {navItems.map((item, index) => (
-             <Link
-  key={item.name}
-  to={item.path}
-  className={`relative font-medium transition-all duration-500 group 
-    text-gray-700 hover:text-green-600 
-    ${isActive(item.path) ? 'text-green-600' : ''}`}
-  style={{
-    outline: 'none',
-    boxShadow: 'none',
-    border: 'none',
-    WebkitTapHighlightColor: 'transparent'
-  }}
->
-  {item.name}
-  <span
-    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-green-500 to-green-600 transform transition-all duration-500 ease-out 
-      ${isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
-  ></span>
-</Link>
+       <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 p-4 flex flex-col items-center space-y-4">
+  <div className="flex space-x-4 text-sm font-medium">
+    {navItems.map((item) => (
+      <Link
+        key={item.name}
+        to={item.path}
+        onClick={() => setIsMenuOpen(false)}
+        className={`relative transition-all duration-300 ${
+          isActive(item.path) ? 'text-green-600 font-semibold' : 'text-gray-700 hover:text-green-600'
+        }`}
+      >
+        {item.name}
+        <span
+          className={`absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-green-500 to-green-600 transform transition-all duration-300 ${
+            isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+          }`}
+        ></span>
+      </Link>
+    ))}
+  </div>
 
-            ))}
-            <Link
-              to="/contact"
-              className="block w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold text-center hover:scale-105 hover:shadow-xl transition-all duration-300 animate-bounce-in"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Order Now
-            </Link>
-          </div>
-        </div>
+  <Link
+    to="/contact"
+    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 rounded-xl font-semibold text-sm hover:scale-105 transition-all duration-300"
+    onClick={() => setIsMenuOpen(false)}
+  >
+    Order Now
+  </Link>
+</div>
+
       )}
     </nav>
   );
