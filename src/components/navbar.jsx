@@ -31,17 +31,15 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 animate-fade-in">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle">
-              <Truck className="w-7 h-7 text-white" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
-                Food Empire
-              </h1>
-              <p className="text-xs text-gray-500 font-medium">Premium Delivery</p>
-            </div>
-          </Link>
+           {/* ✅ Logo only */}
+          <Link to="/" className="group">
+  <img 
+    src="/Images/preview.png" // <-- Make sure this is your logo path
+    alt="Food Empire Logo"
+    className="w-24 h-24 rounded-2xl shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle"
+  />
+</Link>
+
           
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
