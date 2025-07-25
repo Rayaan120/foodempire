@@ -31,17 +31,18 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 animate-fade-in">
-          {/* ✅ Logo only */}
-          <Link to="/" className="group">
-  <img 
-    src="/Images/preview.png" // <-- Make sure this is your logo path
-    alt="Food Empire Logo"
-    className="w-24 h-24 rounded-2xl shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle"
-  />
-</Link>
-
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle">
+              <Truck className="w-7 h-7 text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                Food Empire
+              </h1>
+              <p className="text-xs text-gray-500 font-medium">Premium Delivery</p>
+            </div>
+          </Link>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -68,7 +69,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button 
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -83,36 +83,32 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-       <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 p-4 flex flex-col items-center space-y-4">
-  <div className="flex space-x-4 text-sm font-medium">
-    {navItems.map((item) => (
-      <Link
-        key={item.name}
-        to={item.path}
-        onClick={() => setIsMenuOpen(false)}
-        className={`relative transition-all duration-300 ${
-          isActive(item.path) ? 'text-green-600 font-semibold' : 'text-gray-700 hover:text-green-600'
-        }`}
-      >
-        {item.name}
-        <span
-          className={`absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-green-500 to-green-600 transform transition-all duration-300 ${
-            isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-          }`}
-        ></span>
-      </Link>
-    ))}
-  </div>
-
-  <Link
-    to="/contact"
-    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 rounded-xl font-semibold text-sm hover:scale-105 transition-all duration-300"
-    onClick={() => setIsMenuOpen(false)}
-  >
-    Order Now
-  </Link>
-</div>
-
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 animate-slide-down">
+          <div className="px-4 py-6 space-y-4">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`block font-medium transition-all duration-300 hover:scale-105 hover:translate-x-2 ${
+                  isActive(item.path)
+                    ? 'text-green-600'
+                    : 'text-gray-700 hover:text-green-600'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link
+              to="/contact"
+              className="block w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold text-center hover:scale-105 hover:shadow-xl transition-all duration-300 animate-bounce-in"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Order Now
+            </Link>
+          </div>
+        </div>
       )}
     </nav>
   );
