@@ -1,6 +1,9 @@
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* ===== PREMIUM ANIMATION SYSTEM ===== */
 
@@ -476,6 +479,9 @@ html {
   outline: 2px solid #22c55e;
   outline-offset: 2px;
   transition: outline 0.2s ease;
+}
+.leaflet-container {
+  z-index: 10 !important;
 }
 
 /* ===== LOADING STATES ===== */

@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, ArrowRight, MessageSquare, Calendar, Users, Globe, Zap, Shield } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+import { useEffect } from "react";
+import { BsChatDotsFill } from "react-icons/bs";
+
 
 const ContactPage = () => {
+  const [showChatButtons, setShowChatButtons] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,10 +22,33 @@ const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  emailjs.send(
+    'service_wpyjduc',
+    'template_7yi4pw8',
+    formData,
+    '_MaMl2caEo5gsW8HH'
+  )
+  .then(() => {
     setIsSubmitted(true);
+    setFormData({   // 👈 This clears the form
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      subject: '',
+      message: '',
+      inquiryType: 'general'
+    });
     setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  })
+  .catch((error) => {
+    console.error('EmailJS error:', error);
+    alert('Failed to send message. Please try again.');
+  });
+};
+
 
   const handleChange = (e) => {
     setFormData({
@@ -62,46 +91,52 @@ const ContactPage = () => {
 ];
 
 
-  const contactMethods = [
-    {
+const contactMethods = [
+ {
   icon: <Phone className="w-8 h-8" />,
   title: "Call Us",
-  description: "Speak with our distribution experts",
+  description: "Speak with our experts",
   contact: "+84 258 3888 388",
   availability: "Mon-Fri, 8AM–5PM · Sat, 8AM–12PM",
   gradient: "from-blue-500 to-cyan-600",
-  action: "Call Now"
+  action: "Call Now",
+  href: "tel:+842583888388" // ✅ Triggers phone call
 },
-
-    {
-      icon: <Mail className="w-8 h-8" />,
-      title: "Email Us",
-      description: "Get detailed information and quotes",
-      contact: "info@food-empire.net",
-      availability: "Response within a day",
-      gradient: "from-purple-500 to-pink-600",
-      action: "Send Email"
-    },
-    {
-      icon: <MessageSquare className="w-8 h-8" />,
-      title: "Live Chat",
-      description: "Instant support from our team",
-      contact: "Within Business Hours",
-      availability: "Average response: business hours",
-      gradient: "from-emerald-500 to-teal-600",
-      action: "Start Chat"
-    },
-    {
+ {
+  icon: <Mail className="w-8 h-8" />,
+  title: "Email Us",
+  description: "Get detailed information and quotes",
+  contact: "info@food-empire.net",
+  availability: "Response within a day",
+  gradient: "from-purple-500 to-pink-600",
+  action: "Send Email",
+  href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@food-empire.net" // ✅ Gmail compose
+},
+  {
+  icon: <MessageSquare className="w-8 h-8" />,
+  title: "Live Chat",
+  description: "Instant support from our team",
+  contact: "Within Business Hours",
+  availability: "Average response: business hours",
+  gradient: "from-emerald-500 to-teal-600",
+  action: "Start Chat",
+  href: "https://zalo.me/0799508999" // ✅ Zalo link
+},
+ {
   icon: <Calendar className="w-8 h-8" />,
   title: "Schedule Meeting",
   description: "Connect with our specialists to discuss your needs",
   contact: "Personalized consultation",
   availability: "Available slots this week",
   gradient: "from-orange-500 to-red-600",
-  action: "Book Now"
+  action: "Book Now",
+  href: "#contact-form" // ✅ added this
 }
 
-  ];
+
+];
+
+  
 
  const features = [
   {
@@ -127,11 +162,33 @@ const ContactPage = () => {
 ];
 
 const inquiryTypes = [
+  { value: 'general', label: 'General Inquiry' },
   { value: 'beef', label: 'Beef' },
   { value: 'lamb', label: 'Lamb' },
   { value: 'fries', label: 'Fries' },
   { value: 'mayonnaise', label: 'Mayonnaise' }
 ];
+
+useEffect(() => {
+  const scriptConfig = document.createElement("script");
+  scriptConfig.innerHTML = `
+    window.chatbaseConfig = {
+      chatbotId: "YOUR_CHATBOT_ID"
+    };
+  `;
+  document.body.appendChild(scriptConfig);
+
+  const scriptEmbed = document.createElement("script");
+  scriptEmbed.src = "https://www.chatbase.co/embed.min.js";
+  scriptEmbed.id = "chatbase-script";
+  scriptEmbed.defer = true;
+  document.body.appendChild(scriptEmbed);
+
+  return () => {
+    document.body.removeChild(scriptConfig);
+    document.body.removeChild(scriptEmbed);
+  };
+}, []);
 
 
   return (
@@ -174,9 +231,22 @@ const inquiryTypes = [
                 <p className="text-gray-600 mb-4">{method.description}</p>
                 <p className="text-lg font-semibold text-gray-900 mb-2">{method.contact}</p>
                 <p className="text-sm text-gray-500 mb-6">{method.availability}</p>
-                <button className={`w-full bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}>
-                  {method.action}
-                </button>
+          {method.href ? (
+  <a
+    href={method.href}
+    className={`w-full inline-block text-center bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}
+  >
+    {method.action}
+  </a>
+) : (
+  <button
+    className={`w-full bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}
+  >
+    {method.action}
+  </button>
+)}
+
+
               </div>
             ))}
           </div>
@@ -184,7 +254,8 @@ const inquiryTypes = [
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 bg-gradient-to-br from-white to-gray-50 animate-fade-in-up delay-200">
+      <section id="contact-form" className="py-20 bg-gradient-to-br from-white to-gray-50 animate-fade-in-up delay-200">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -383,6 +454,7 @@ const inquiryTypes = [
       </div>
     </div>
   </div>
+  
 </section>
 
 
@@ -403,17 +475,17 @@ const inquiryTypes = [
         <Clock className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
         <h4 className="text-xl font-bold text-white mb-4">Business Hours</h4>
         <div className="space-y-2 text-gray-300">
-          <p>Monday - Friday: 8:00 AM - 5:00 PM EST</p>
-          <p>Saturday: 8:00 AM - 12:00 PM EST</p>
+          <p>Monday - Friday: 8:00 AM - 5:00 PM ICT</p>
+          <p>Saturday: 8:00 AM - 12:00 PM ICT</p>
           <p>Sunday: Closed</p>
         </div>
       </div>
 
       <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 text-center">
         <MessageSquare className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-        <h4 className="text-xl font-bold text-white mb-4">24/7 Support</h4>
+        <h4 className="text-xl font-bold text-white mb-4">Customer Support</h4>
         <div className="space-y-2 text-gray-300">
-          <p>Emergency Support: Available</p>
+          
           <p>Live Chat: Online during business hours</p>
           <p>Email: Replies within working hours</p>
         </div>
@@ -430,7 +502,50 @@ const inquiryTypes = [
       </div>
     </div>
   </div>
-  
+ {/* Floating Toggle Button for Zalo & WhatsApp */}
+<div className="fixed bottom-6 right-6 z-50">
+  <div className="relative">
+    {/* Toggle Button */}
+   {/* Toggle Button */}
+<button
+  onClick={() => setShowChatButtons(!showChatButtons)}
+  className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-600 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+  aria-label="Toggle Chat Options"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+
+    {/* Zalo + WhatsApp Buttons */}
+    {showChatButtons && (
+      <div className="absolute bottom-16 right-0 space-y-3 transition-all duration-300">
+        {/* Zalo */}
+        <a
+          href="https://zalo.me/0799508999"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg"
+          aria-label="Chat on Zalo"
+        >
+          <BsChatDotsFill size={22} />
+        </a>
+        {/* WhatsApp */}
+        <a
+          href="https://wa.me/84799508999"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-12 h-12 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-full flex items-center justify-center shadow-lg"
+          aria-label="Chat on WhatsApp"
+        >
+          <FaWhatsapp size={22} />
+        </a>
+      </div>
+       )}
+  </div>
+  </div>
+
 </section>
 
     </div>

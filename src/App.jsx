@@ -7,6 +7,9 @@ import About from './pages/about';
 import ProductsPage from './pages/ProductsPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
+import GlobalPresenceMap from './components/GlobalPresenceMap';
+
+
 
 function App() {
   return (
@@ -26,6 +29,7 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/map" element={<GlobalPresenceMap />} /> {/* ✅ NEW MAP ROUTE */}
       </Routes>
 
       <Footer />

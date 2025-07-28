@@ -10,6 +10,18 @@ const CareersPage = () => {
   const departments = [
   { id: 'all', name: 'All Departments', count: 3 }
 ];
+const [activeJob, setActiveJob] = useState(null);
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const openModal = (job) => {
+  setActiveJob(job);
+  setIsModalOpen(true);
+};
+
+const closeModal = () => {
+  setActiveJob(null);
+  setIsModalOpen(false);
+};
 
 
   const locations = [
@@ -19,33 +31,69 @@ const CareersPage = () => {
 
 
   const jobs = [
+{
+  id: 1,
+  title: "Sales Executive",
+  location: "Vietnam",
+  type: "Full-time",
+  posted: "2 days ago",
+  required: 3,
+  urgent: true,
+  description: "Responsible for achieving sales targets and managing client relationships.",
+  fullDescription: `As a Sales Executive, you will be responsible for:
+• Developing a customer approach plan for all products based on the company's orientation, goals, and customer data.
+• Exploring new customer sources through meetings, introductions, and consultations.
+• Reporting customer feedback under your responsibility to help the company adjust and develop strategies.
+• Monitoring, collecting, and being accountable for customer debts.
+• Maintaining strong relationships with existing customers.
+• Ensuring achievement of the company’s sales targets.
+• Reporting on customer approach status and ongoing orders.
+• Performing additional tasks as assigned by management.`
+},
+
   {
-    id: 1,
-    title: "Sales Executive",
-    location: "Vietnam",
-    type: "Full-time",
-    posted: "2 days ago",
-    required: 3,
-    urgent: true
-  },
+  id: 2,
+  title: "General Admin",
+  location: "Vietnam",
+  type: "Full-time",
+  posted: "1 week ago",
+  required: 1,
+  urgent: true,
+  description: "Provide general administrative support and ensure smooth daily operations.",
+  fullDescription: `As a General Admin, you will be responsible for:
+• Providing general administrative support including filing, data entry, typing, and assisting with communications and paperwork.
+• Managing diaries, travel arrangements, visitors, reception, and telephone duties.
+• Assisting the Line Manager in implementing improvements and necessary changes.
+• Liaising with external agencies on administration-related matters.
+• Preparing monthly reports in the agreed format and content.
+• Meeting personal targets and supporting the Line Manager in achieving team goals.
+• Ensuring compliance with agreed codes, legislation, and health & safety procedures.
+• Maintaining accurate records and documentation for all assigned tasks.
+• Reporting any issues or failures that may impact the organization or clients.
+• Contributing to the smooth functioning of the team.
+• Using resources responsibly and controlling expenses within budget.
+• Following all company policies and procedures.
+• Interacting and cooperating with colleagues, suppliers, and clients/customers.
+• Performing other tasks as required by the management.`
+},
   {
-    id: 2,
-    title: "General Admin",
-    location: "Vietnam",
-    type: "Full-time",
-    posted: "1 week ago",
-    required: 1,
-    urgent: false
-  },
-  {
-    id: 3,
-    title: "Purchase Admin",
-    location: "Vietnam",
-    type: "Full-time",
-    posted: "3 days ago",
-    required: 1,
-    urgent: true
-  }
+  id: 3,
+  title: "Purchase Admin",
+  location: "Vietnam",
+  type: "Full-time",
+  posted: "3 days ago",
+  required: 1,
+  urgent: true,
+  description: "Support procurement activities and handle purchasing-related admin tasks.",
+  fullDescription: `As a Purchasing Admin, you will be responsible for:
+• Preparing purchasing documents and obtaining quotes.
+• Creating and maintaining accurate sales and purchasing reports.
+• Developing and improving internal processes for procurement and related departments.
+• Sourcing suppliers, comparing quotations, and analyzing offers to ensure best value.
+• Performing general office administration duties.
+• Carrying out other tasks as required by the management.`
+}
+
 ];
 
 
@@ -79,22 +127,22 @@ const CareersPage = () => {
 
   const values = [
     {
-      icon: <Zap className="w-6 h-6" />,
+      
       title: "Innovation",
       description: "We embrace cutting-edge technology and creative solutions."
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      
       title: "Collaboration",
       description: "We work together to achieve extraordinary results."
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      
       title: "Excellence",
       description: "We strive for the highest standards in everything we do."
     },
     {
-      icon: <Heart className="w-6 h-6" />,
+      
       title: "Integrity",
       description: "We act with honesty and transparency in all our dealings."
     }
@@ -202,6 +250,7 @@ const CareersPage = () => {
           {/* Job Listings */}
           <div className="space-y-6 stagger-children">
             {filteredJobs.map((job) => (
+              
               <div 
                 key={job.id}
                 className="group bg-white p-8 rounded-3xl shadow-xl border border-gray-200/50 card-animate gpu-accelerated"
@@ -238,12 +287,27 @@ const CareersPage = () => {
                     </div>
                     
                     <p className="text-gray-600 mb-4 leading-relaxed">{job.description}</p>
+<button
+  onClick={() => openModal(job)}
+  className="text-emerald-600 font-semibold hover:underline text-sm"
+>
+  View Full Description
+</button>
+
                     
                   </div>
                   
                   <div className="lg:ml-8 flex flex-col space-y-4">
                     <div className="text-sm text-gray-700 font-semibold mt-2">
-  Drop your CV at <a href="mailto:hr@company.com" className="text-emerald-600 underline">career@food-empire.net</a>
+  Drop your CV at <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=career@food-empire.net"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-emerald-600 underline hover:text-emerald-800 transition"
+>
+  career@food-empire.net
+</a>
+
 </div>
 
                     <div className="text-center text-sm text-gray-500">
@@ -254,6 +318,22 @@ const CareersPage = () => {
               </div>
             ))}
           </div>
+              {isModalOpen && activeJob && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+    <div className="bg-white max-w-2xl w-full p-8 rounded-2xl shadow-2xl relative animate-fade-in-up">
+      <button
+        onClick={closeModal}
+        className="absolute top-4 right-4 text-gray-600 hover:text-black text-xl"
+      >
+        &times;
+      </button>
+      <h3 className="text-2xl font-bold mb-4 text-gray-900">{activeJob.title}</h3>
+      <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+        {activeJob.fullDescription}
+      </p>
+    </div>
+  </div>
+)}
 
           {filteredJobs.length === 0 && (
             <div className="text-center py-16 animate-fade-in-up">
@@ -293,17 +373,14 @@ const CareersPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-children">
             {values.map((value, index) => (
               <div 
-                key={index}
-                className="group bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 hover:bg-white/20 hover-lift text-center gpu-accelerated"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-rotate animate-float">
-                  <div className="text-white">
-                    {value.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{value.description}</p>
-              </div>
+  key={index}
+  className="group bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 hover:bg-white/20 hover-lift text-center gpu-accelerated"
+>
+  <div className="h-4 mb-4"></div> {/* removed green icon box */}
+  <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
+  <p className="text-gray-300 leading-relaxed">{value.description}</p>
+</div>
+
             ))}
           </div>
         </div>
@@ -323,7 +400,16 @@ const CareersPage = () => {
           
           <div className="animate-fade-in-up delay-400 mt-6">
   <p className="text-lg font-semibold text-gray-700">
-    Drop your CV at <a href="mailto:career@food-empire.net" className="text-emerald-600 underline">career@food-empire.net</a>
+    Drop your CV at <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=career@food-empire.net"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-emerald-600 underline hover:text-emerald-800 transition"
+>
+  career@food-empire.net
+</a>
+
+
   </p>
 </div>
 
