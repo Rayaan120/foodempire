@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Users, Award, Globe, Target, Zap, Shield, Heart, TrendingUp, CheckCircle, ArrowRight, Building, Calendar, MapPin, Star } from 'lucide-react';
 import {  Clock, Menu } from "lucide-react";
 import { Sparkles } from 'lucide-react';
-import GlobalPresenceMap from '../components/GlobalPresenceMap';
+import GlobalToVietnamMap from '../components/GlobalToVietnamMap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
@@ -94,10 +94,7 @@ const AboutPage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-teal-50/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-100 to-teal-100 px-6 py-3 rounded-full mb-6 border border-emerald-200/50 animate-bounce-in">
-              <Building className="w-5 h-5 text-emerald-600" />
-              <span className="text-emerald-700 font-semibold">About Food Empire</span>
-            </div>
+            
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
@@ -136,61 +133,68 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Mission & Vision */}
       <section 
   className="py-20 bg-gradient-to-br from-white to-gray-50"
   data-aos="fade-up"
 >
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in-left">
-              <h2 className="text-4xl font-bold mb-8 animate-fade-in-up">
-                <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                  Our Mission & Vision
-                </span>
-              </h2>
-              
-              <div className="space-y-8 stagger-children">
-                <div className="group p-8 bg-white rounded-3xl shadow-xl border border-gray-200/50 card-animate">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center hover-rotate">
-                      <Target className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900">Mission</h3>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    To revolutionize food distribution through innovative technology, ensuring fresh, 
-                    safe, and sustainable food reaches every table while supporting our partners' success.
-                  </p>
-                </div>
+    {/* Title placed above the flex layout so it doesn't affect height match */}
+    <h2 className="text-4xl font-bold mb-16 text-center animate-fade-in-up">
+      <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+        Our Mission & Vision
+      </span>
+    </h2>
 
-                <div className="group p-8 bg-white rounded-3xl shadow-xl border border-gray-200/50 card-animate">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center hover-rotate">
-                      <Star className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900">Vision</h3>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    To be the global leader in intelligent food distribution, setting new standards 
-                    for quality, sustainability, and technological innovation in the industry.
-                  </p>
-                </div>
+    <div className="flex flex-col md:flex-row gap-16 items-stretch">
+      
+      {/* Left: Mission & Vision Cards only */}
+      <div className="flex flex-col justify-between flex-1 h-full">
+        <div className="space-y-8 h-full">
+          {/* Mission */}
+          <div className="group p-8 bg-white rounded-3xl shadow-xl border border-gray-200/50 card-animate">
+            <div className="flex items-center space-x-4 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center hover-rotate">
+                <Target className="w-6 h-6 text-white" />
               </div>
+              <h3 className="text-2xl font-bold text-gray-900">Mission</h3>
             </div>
+            <p className="text-gray-600 leading-relaxed">
+              To revolutionize food distribution through innovative technology, ensuring fresh, 
+              safe, and sustainable food reaches every table while supporting our partners' success.
+            </p>
+          </div>
 
-            <div className="relative animate-fade-in-right mt-24">
-              <img 
-                src="/Images/premium.jpg"
-                alt="Food Empire facility"
-                className="w-full h-96 object-cover rounded-3xl shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent rounded-3xl"></div>
+          {/* Vision */}
+          <div className="group p-8 bg-white rounded-3xl shadow-xl border border-gray-200/50 card-animate">
+            <div className="flex items-center space-x-4 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center hover-rotate">
+                <Star className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Vision</h3>
             </div>
+            <p className="text-gray-600 leading-relaxed">
+              To be the global leader in intelligent food distribution, setting new standards 
+              for quality, sustainability, and technological innovation in the industry.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Right: Image perfectly matching cards' height */}
+      <div className="flex-1">
+        <div className="relative h-full">
+          <img 
+            src="/Images/premium.jpg"
+            alt="Food Empire facility"
+            className="w-full h-full object-cover rounded-3xl shadow-2xl"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent rounded-3xl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       
 
@@ -212,17 +216,21 @@ const AboutPage = () => {
 
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
       {values.map((value, index) => (
-        <div 
-          key={index}
-          className="group relative p-8 bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-emerald-100/60"
-          data-aos="zoom-in"
-          data-aos-delay={index * 100}
-        >
-          <div className="relative z-10">
-            <h3 className="text-xl font-bold text-gray-900 text-center mb-3">{value.title}</h3>
-            <p className="text-gray-600 text-sm text-center leading-relaxed">{value.description}</p>
-          </div>
-        </div>
+       <div 
+  key={index}
+  className="group relative p-8 bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-emerald-100/50 overflow-hidden"
+  data-aos="zoom-in"
+  data-aos-delay={index * 100}
+>
+  {/* Glowing hover background overlay */}
+  <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-10 blur-2xl transition-all duration-500"></div>
+
+  <div className="relative z-10">
+    <h3 className="text-xl font-bold text-gray-900 text-center mb-3">{value.title}</h3>
+    <p className="text-gray-600 text-sm text-center leading-relaxed">{value.description}</p>
+  </div>
+</div>
+
       ))}
     </div>
   </div>
@@ -372,6 +380,8 @@ const AboutPage = () => {
   </div>
 </section>
 
+<GlobalToVietnamMap />
+
 
       
       {/* Global Presence */}
@@ -392,7 +402,7 @@ const AboutPage = () => {
         A growing group of dynamic companies led by Alishan Zafar, committed to quality, innovation, and expansion across international markets.
       </p>
     </div>
-    <GlobalPresenceMap />
+    
 
     <div className="max-w-4xl mx-auto animate-fade-in-left">
       <div className="space-y-12">
@@ -413,7 +423,7 @@ const AboutPage = () => {
   {/* Greek Souvlaki */}
   <div className="flex items-center space-x-3">
     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth"></div>
-    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-6 h-6 object-contain rounded-sm" />
+    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-24 h-24 object-contain rounded-sm" />
     <span className="text-gray-700">
       <strong>Greek Souvlaki</strong> — European-based food brand with a focus on refined taste and quality
     </span>

@@ -7,6 +7,8 @@ import { BsChatDotsFill } from "react-icons/bs";
 
 
 const ContactPage = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   const [showChatButtons, setShowChatButtons] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -25,10 +27,10 @@ const ContactPage = () => {
   e.preventDefault();
 
   emailjs.send(
-    'service_wpyjduc',
-    'template_7yi4pw8',
+    'service_n5lptmv',
+    'template_lvjxldc',
     formData,
-    '_MaMl2caEo5gsW8HH'
+    'KYTDmibC6pXtsgIw9'
   )
   .then(() => {
     setIsSubmitted(true);
@@ -92,48 +94,68 @@ const ContactPage = () => {
 
 
 const contactMethods = [
- {
-  icon: <Phone className="w-8 h-8" />,
-  title: "Call Us",
-  description: "Speak with our experts",
-  contact: "+84 258 3888 388",
-  availability: "Mon-Fri, 8AM–5PM · Sat, 8AM–12PM",
-  gradient: "from-blue-500 to-cyan-600",
-  action: "Call Now",
-  href: "tel:+842583888388" // ✅ Triggers phone call
-},
- {
-  icon: <Mail className="w-8 h-8" />,
-  title: "Email Us",
-  description: "Get detailed information and quotes",
-  contact: "info@food-empire.net",
-  availability: "Response within a day",
-  gradient: "from-purple-500 to-pink-600",
-  action: "Send Email",
-  href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@food-empire.net" // ✅ Gmail compose
-},
+  {
+    icon: <Phone className="w-8 h-8" />,
+    title: "Call Us",
+    description: "Speak with our experts",
+    contact: "+84 258 3888 388",
+    availability: "Mon-Fri, 8AM–5PM · Sat, 8AM–12PM",
+    gradient: "from-blue-500 to-cyan-600",
+    action: "Call Now",
+    href: "tel:+842583888388"
+  },
+  {
+    icon: <Mail className="w-8 h-8" />,
+    title: "Email Us",
+    description: "Get detailed information and quotes",
+    contact: "info@food-empire.net",
+    availability: "Response within a day",
+    gradient: "from-purple-500 to-pink-600",
+    action: "Send Email",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@food-empire.net"
+  },
   {
   icon: <MessageSquare className="w-8 h-8" />,
   title: "Live Chat",
-  description: "Instant support from our team",
+  description: "Instant responsive support from our team",
   contact: "Within Business Hours",
   availability: "Average response: business hours",
   gradient: "from-emerald-500 to-teal-600",
   action: "Start Chat",
-  href: "https://zalo.me/0799508999" // ✅ Zalo link
-},
- {
-  icon: <Calendar className="w-8 h-8" />,
-  title: "Schedule Meeting",
-  description: "Connect with our specialists to discuss your needs",
-  contact: "Personalized consultation",
-  availability: "Available slots this week",
-  gradient: "from-orange-500 to-red-600",
-  action: "Book Now",
-  href: "#contact-form" // ✅ added this
+  href: "", // No external link
+  onClick: () => setIsChatOpen(prev => !prev) // ✅ TOGGLE instead of force open
 }
-
-
+,
+  {
+    icon: <Calendar className="w-8 h-8" />,
+    title: "Schedule Meeting",
+    description: "Connect with our specialists to discuss your needs",
+    contact: "Personalized consultation",
+    availability: "Available slots this week",
+    gradient: "from-orange-500 to-red-600",
+    action: "Book Now",
+    href: "#contact-form"
+  },
+  {
+    icon: <FaWhatsapp className="w-8 h-8" />,
+    title: "WhatsApp",
+    description: "Quick chat on WhatsApp with our team",
+    contact: "+84 799 508 999",
+    availability: "Typically replies in minutes",
+    gradient: "from-green-500 to-green-600",
+    action: "Chat Now",
+    href: "https://wa.me/84799508999"
+  },
+  {
+    icon: <BsChatDotsFill className="w-8 h-8" />,
+    title: "Zalo Support",
+    description: "Connect instantly with us on Zalo",
+    contact: "@0799508999",
+    availability: "Available during business hours",
+    gradient: "from-sky-500 to-blue-600",
+    action: "Message Now",
+    href: "https://zalo.me/0799508999"
+  }
 ];
 
   
@@ -169,26 +191,17 @@ const inquiryTypes = [
   { value: 'mayonnaise', label: 'Mayonnaise' }
 ];
 
-useEffect(() => {
-  const scriptConfig = document.createElement("script");
-  scriptConfig.innerHTML = `
-    window.chatbaseConfig = {
-      chatbotId: "YOUR_CHATBOT_ID"
-    };
-  `;
-  document.body.appendChild(scriptConfig);
+// Chatbase bot loader
+  useEffect(() => {
+    if (document.getElementById("09UYORqziZw2afP5UiUkA")) return;
 
-  const scriptEmbed = document.createElement("script");
-  scriptEmbed.src = "https://www.chatbase.co/embed.min.js";
-  scriptEmbed.id = "chatbase-script";
-  scriptEmbed.defer = true;
-  document.body.appendChild(scriptEmbed);
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "09UYORqziZw2afP5UiUkA"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
-  return () => {
-    document.body.removeChild(scriptConfig);
-    document.body.removeChild(scriptEmbed);
-  };
-}, []);
 
 
   return (
@@ -231,20 +244,26 @@ useEffect(() => {
                 <p className="text-gray-600 mb-4">{method.description}</p>
                 <p className="text-lg font-semibold text-gray-900 mb-2">{method.contact}</p>
                 <p className="text-sm text-gray-500 mb-6">{method.availability}</p>
-          {method.href ? (
+        {method.href ? (
   <a
     href={method.href}
+    target="_blank"
+    rel="noopener noreferrer"
     className={`w-full inline-block text-center bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}
   >
     {method.action}
   </a>
 ) : (
   <button
+    onClick={() => {
+      if (method.title === "Live Chat") setIsChatOpen(true);
+    }}
     className={`w-full bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}
   >
     {method.action}
   </button>
 )}
+
 
 
               </div>
@@ -502,51 +521,35 @@ useEffect(() => {
       </div>
     </div>
   </div>
- {/* Floating Toggle Button for Zalo & WhatsApp */}
-<div className="fixed bottom-6 right-6 z-50">
-  <div className="relative">
-    {/* Toggle Button */}
-   {/* Toggle Button */}
-<button
-  onClick={() => setShowChatButtons(!showChatButtons)}
-  className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-600 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all"
-  aria-label="Toggle Chat Options"
->
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-  </svg>
-</button>
+ 
 
 
-    {/* Zalo + WhatsApp Buttons */}
-    {showChatButtons && (
-      <div className="absolute bottom-16 right-0 space-y-3 transition-all duration-300">
-        {/* Zalo */}
-        <a
-          href="https://zalo.me/0799508999"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg"
-          aria-label="Chat on Zalo"
-        >
-          <BsChatDotsFill size={22} />
-        </a>
-        {/* WhatsApp */}
-        <a
-          href="https://wa.me/84799508999"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-12 h-12 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-full flex items-center justify-center shadow-lg"
-          aria-label="Chat on WhatsApp"
-        >
-          <FaWhatsapp size={22} />
-        </a>
-      </div>
-       )}
-  </div>
-  </div>
+
+
+  
+  
 
 </section>
+{isChatOpen && (
+  <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+    <div className="bg-white w-full max-w-3xl rounded-xl shadow-xl relative">
+      <button
+        onClick={() => setIsChatOpen(false)}
+        className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+        aria-label="Close Chat"
+      >
+        ×
+      </button>
+      <iframe
+        src="https://www.chatbase.co/chatbot-iframe/09UYORqziZw2afP5UiUkA"
+        width="100%"
+        style={{ height: '700px' }}
+        frameBorder="0"
+        title="Live Chatbot"
+      ></iframe>
+    </div>
+  </div>
+)}
 
     </div>
   );

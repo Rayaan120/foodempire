@@ -510,3 +510,8 @@ html {
   white-space: nowrap;
   animation: typewriter 3s steps(40, end), blink 0.75s step-end infinite;
 }
+
+.leaflet-container {
+  z-index: 10 !important;
+}
+

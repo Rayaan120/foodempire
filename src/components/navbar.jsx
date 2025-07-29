@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Truck, Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,23 +24,25 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-700 ease-out ${
-      scrollY > 50 
-        ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/50 transform translate-y-0' 
-        : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-700 ease-out ${
+        (location.pathname !== '/' || scrollY > 50)
+          ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/50'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 animate-fade-in">
-           {/* ✅ Logo only */}
+          {/* Logo */}
           <Link to="/" className="group">
-  <img 
-    src="/Images/preview.png" // <-- Make sure this is your logo path
-    alt="Food Empire Logo"
-    className="w-24 h-24 rounded-2xl shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle"
-  />
-</Link>
+            <img
+              src="/Images/preview.png"
+              alt="Food Empire Logo"
+              className="w-24 h-24 rounded-2xl shadow-lg group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 ease-out animate-bounce-subtle"
+            />
+          </Link>
 
-          
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -49,13 +51,19 @@ const Navbar = () => {
                 className={`font-medium transition-all duration-500 relative group hover:scale-105 ${
                   isActive(item.path)
                     ? 'text-green-600'
-                    : 'text-gray-700 hover:text-green-600'
+                    : (location.pathname !== '/' || scrollY > 50)
+                      ? 'text-gray-800 hover:text-green-600'
+                      : 'text-white hover:text-green-300'
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-green-500 to-green-600 transform transition-all duration-500 ease-out ${
-                  isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`}></span>
+                <span
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-green-500 to-green-600 transform transition-all duration-500 ease-out ${
+                    isActive(item.path)
+                      ? 'scale-x-100'
+                      : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                ></span>
               </Link>
             ))}
             <Link
@@ -67,14 +75,16 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <button 
+          {/* Mobile Menu Button */}
+          <button
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 hover:scale-110 transition-all duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? 
-              <X className="w-6 h-6 animate-spin-slow" /> : 
+            {isMenuOpen ? (
+              <X className="w-6 h-6 animate-spin-slow" />
+            ) : (
               <Menu className="w-6 h-6 hover:rotate-180 transition-transform duration-500" />
-            }
+            )}
           </button>
         </div>
       </div>
@@ -90,7 +100,7 @@ const Navbar = () => {
                 className={`block font-medium transition-all duration-300 hover:scale-105 hover:translate-x-2 ${
                   isActive(item.path)
                     ? 'text-green-600'
-                    : 'text-gray-700 hover:text-green-600'
+                    : 'text-gray-800 hover:text-green-600'
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setIsMenuOpen(false)}

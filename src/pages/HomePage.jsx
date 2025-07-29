@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Truck, Shield, Clock, Phone, Mail, MapPin, CheckCircle, Users, Award, Globe, ArrowRight, Play, TrendingUp, Zap, Target, ChevronRight, Quote, Leaf, Award as AwardIcon, Sparkles, Eye, Heart, ThumbsUp } from 'lucide-react';
-import GlobalPresenceMap from "../components/GlobalPresenceMap";
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -128,81 +128,34 @@ const HomePage = () => {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-    <div className="mb-8">
-      <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-100 to-green-200 px-6 py-3 rounded-full mb-6 border border-green-300/50 animate-bounce-in hover:scale-105 transition-transform duration-300">
-        <Sparkles className="w-5 h-5 text-green-600" />
-        <span className="text-green-700 font-semibold">Trusted Food Distribution</span>
-      </div>
-      
-     <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
-  <span className="text-white">Trusted Quality</span>
-  <br />
-  <span className="bg-gradient-to-r from-green-500 via-green-600 to-green-700 bg-clip-text text-transparent animate-gradient">
-    Food Distribution
-  </span>
-</h1>
+      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
+ <div 
+  className="absolute inset-0 z-0 bg-no-repeat bg-right bg-contain lg:bg-cover"
+  style={{ backgroundImage: "url('/Images/hero-bg.png')" }} // or jpg depending on your rename
+></div>
 
 
-      
-      
-      <p className="text-xl md:text-2xl text-white mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-  Savor the finest beef, lamb, french fries and other delivered products to your door, perfect for business meets —powered by smart logistics, operational process
-  and finest quality at your doorsteps. Trusted for quality. Chosen for consistency.
-</p>
 
-    </div>
-
-    <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16 animate-fade-in-up delay-600">
+  <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col items-start justify-center min-h-screen text-left">
+    <div className="max-w-2xl">
+      <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
+        <span className="text-green-600">Delivering Finest</span> <br />
+        Beef, Lamb, Fries & Other Products
+      </h1>
+      <p className="text-lg md:text-xl text-gray-700 mb-8">
+        Trusted by hundreds of businesses, Food Empire delivers top-quality meat and frozen products across Vietnam. Perfectly packed, reliably delivered.
+      </p>
       <Link
         to="/contact"
-        className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg btn-animate hover-glow flex items-center space-x-3"
+        className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition"
       >
-        <span>Order Now</span>
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" />
+        Order Now
+        <ArrowRight className="inline w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
       </Link>
     </div>
-
-    {/* ✅ Centered Stats Cards */}
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto justify-items-center">
-      {stats.map((stat, index) => (
-       <div 
-  key={index} 
-  className="group bg-white/80 backdrop-blur-sm p-6 w-64 rounded-2xl shadow-xl border border-gray-200/50 card-animate animate-float gpu-accelerated"
->
-
-          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 hover-rotate">
-            <div className="text-white">
-              {stat.icon}
-            </div>
-          </div>
-          <div className="text-3xl font-bold text-gray-900 mb-2 hover-scale">{stat.number}</div>
-          <div className="text-gray-600 font-medium">{stat.label}</div>
-        </div>
-      ))}
-    </div>
   </div>
-
-  {/* Hero Background Image */}
-  <div className="absolute inset-0 z-0">
-  {/* Dark overlay */}
-  
-
-  {/* Background image */}
-  <img 
-    src="/Images/hero-bg.jpg"
-    alt="Beef, Lamb, and French Fries"
-    className="w-full h-full object-cover brightness-90"
-  />
-</div>
-
-
-  {/* Floating Elements */}
-  <div className="absolute top-20 left-10 w-20 h-20 bg-green-500/10 rounded-full animate-float animation-delay-1000"></div>
-  <div className="absolute bottom-20 right-10 w-32 h-32 bg-green-600/10 rounded-full animate-float animation-delay-2000"></div>
-  <div className="absolute top-1/2 left-20 w-16 h-16 bg-green-400/10 rounded-full animate-bounce-slow animation-delay-1500"></div>
 </section>
+
 
 
       
