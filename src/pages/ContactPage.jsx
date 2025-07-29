@@ -27,10 +27,10 @@ const ContactPage = () => {
   e.preventDefault();
 
   emailjs.send(
-    'service_n5lptmv',
-    'template_lvjxldc',
+    'service_wpyjduc',
+    'template_7yi4pw8',
     formData,
-    'KYTDmibC6pXtsgIw9'
+    '_MaMl2caEo5gsW8HH'
   )
   .then(() => {
     setIsSubmitted(true);
@@ -126,22 +126,27 @@ const contactMethods = [
   onClick: () => setIsChatOpen(prev => !prev) // ✅ TOGGLE instead of force open
 }
 ,
-  {
-    icon: <Calendar className="w-8 h-8" />,
-    title: "Schedule Meeting",
-    description: "Connect with our specialists to discuss your needs",
-    contact: "Personalized consultation",
-    availability: "Available slots this week",
-    gradient: "from-orange-500 to-red-600",
-    action: "Book Now",
-    href: "#contact-form"
-  },
+ {
+  icon: <Calendar className="w-8 h-8" />,
+  title: "Schedule Meeting",
+  description: "Connect with our specialists to discuss your needs",
+  contact: "Personalized consultation",
+  availability: "Available slots this week",
+  gradient: "from-orange-500 to-red-600",
+  action: "Book Now",
+  onClick: () => {
+    const formSection = document.getElementById("contact-form");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+},
   {
     icon: <FaWhatsapp className="w-8 h-8" />,
     title: "WhatsApp",
     description: "Quick chat on WhatsApp with our team",
     contact: "+84 799 508 999",
-    availability: "Typically replies in minutes",
+    availability: "Available during business hours",
     gradient: "from-green-500 to-green-600",
     action: "Chat Now",
     href: "https://wa.me/84799508999"
@@ -150,11 +155,11 @@ const contactMethods = [
     icon: <BsChatDotsFill className="w-8 h-8" />,
     title: "Zalo Support",
     description: "Connect instantly with us on Zalo",
-    contact: "@0799508999",
+    contact: "+84 90 291 79 02",
     availability: "Available during business hours",
     gradient: "from-sky-500 to-blue-600",
     action: "Message Now",
-    href: "https://zalo.me/0799508999"
+    href: "https://zalo.me/84902917902"
   }
 ];
 
@@ -211,9 +216,8 @@ const inquiryTypes = [
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-teal-50/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up delay-200">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-100 to-teal-100 px-6 py-3 rounded-full mb-6 border border-emerald-200/50 animate-bounce-in">
-              <MessageSquare className="w-5 h-5 text-emerald-600" />
-              <span className="text-emerald-700 font-semibold">Get In Touch</span>
+            <div className="inline-flex items-center ">
+              
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
@@ -255,14 +259,15 @@ const inquiryTypes = [
   </a>
 ) : (
   <button
-    onClick={() => {
+    onClick={method.onClick || (() => {
       if (method.title === "Live Chat") setIsChatOpen(true);
-    }}
+    })}
     className={`w-full bg-gradient-to-r ${method.gradient} text-white py-3 rounded-xl font-semibold btn-animate hover-glow`}
   >
     {method.action}
   </button>
 )}
+
 
 
 

@@ -355,10 +355,11 @@ const AboutPage = () => {
         >
           <div className="relative w-28 h-28 mx-auto mb-6">
             <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover rounded-full border-4 border-white shadow-md group-hover:rotate-[1.5deg] transition-transform duration-300"
-            />
+  src={member.image}
+  alt={member.name}
+  className="w-full h-full object-top object-cover rounded-full border-4 border-white shadow-md group-hover:rotate-[1.5deg] transition-transform duration-300"
+/>
+
             <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 border-2 border-white rounded-full animate-pulse-smooth"></div>
           </div>
 

@@ -3,12 +3,12 @@ import * as d3 from "d3";
 import { feature } from "topojson-client";
 
 const cities = [
-  { name: "Sydney", coords: [151.2093, -33.8688] },       // Australia
-  { name: "New York", coords: [-74.0060, 40.7128] },      // USA
-  { name: "Mumbai", coords: [72.8777, 19.0760] },         // India
-  { name: "Toronto", coords: [-79.3832, 43.6532] },       // Canada
-  { name: "Auckland", coords: [174.7633, -36.8485] },     // New Zealand
-  { name: "Shanghai", coords: [121.4737, 31.2304] },      // China
+  { name: "Australia", coords: [151.2093, -33.8688] },   // Sydney
+  { name: "USA", coords: [-95.0, 37.0] },          // New York
+  { name: "India", coords: [72.8777, 19.0760] },         // Mumbai
+ { name: "Canada", coords: [-100.0, 56.0] },       // Toronto
+  { name: "New Zealand", coords: [174.7633, -36.8485] }, // Auckland
+  { name: "China", coords: [121.4737, 31.2304] },        // Shanghai
 ];
 
 

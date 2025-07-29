@@ -11,9 +11,6 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
-  },
-  server: {
-    host: '0.0.0.0', // Listen on all network interfaces
-    port: 5173,       // The port Vite should run on (default is 5173)
-  },
+  }
+  
 });

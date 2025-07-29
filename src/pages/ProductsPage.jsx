@@ -10,8 +10,8 @@ const ProductsPage = () => {
 
   const categories = [
     { id: 'all', name: 'All Items', count: 19 },
-    { id: 'beef', name: 'Premium Beef', count: 15 },
-    { id: 'lamb', name: 'Fresh Lamb', count: 2 },
+    { id: 'beef', name: 'Beef', count: 15 },
+    { id: 'lamb', name: 'Lamb', count: 2 },
     { id: 'fries', name: 'French Fries', count: 1 },
     { id: 'mayonnaise', name: 'Mayonnaise', count: 1 }
   ];
@@ -231,19 +231,7 @@ const ProductsPage = () => {
       rating: 4.9,
       suppliers: 6
     },
-    {
-        id: 17,
-        name: "NZ Lamb Rack",
-        category: "lamb",
-        country: "New Zealand",
-        description: "Exquisite New Zealand lamb rack, perfect for fine dining.",
-        image: "/Images/nz_lamb_rack.jpg", // Placeholder image
-        features: ["New Zealand origin"],
-        gradient: "from-purple-500 to-pink-600",
-        badge: "Alliance",
-        rating: 4.8,
-        suppliers: 4
-    },
+    
 
 
     // 🍟 8 French Fries Products
@@ -337,9 +325,8 @@ const ProductsPage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-teal-50/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-100 to-teal-100 px-6 py-3 rounded-full mb-6 border border-emerald-200/50 animate-bounce-in">
-              <Leaf className="w-5 h-5 text-emerald-600" />
-              <span className="text-emerald-700 font-semibold">Finest Product Range</span>
+            <div className="inline-flex items-center">
+              
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
@@ -360,21 +347,22 @@ const ProductsPage = () => {
           {/* Search, Category, and Country Filters - Integrated Layout */}
           <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 mb-12 animate-fade-in-up delay-600 p-6 rounded-3xl bg-white/70 backdrop-blur-md shadow-lg border border-gray-100">
             {/* Search Input */}
-            <div className="relative flex-1 max-w-md w-full">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white rounded-2xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 hover-lift text-lg"
-              />
-            </div>
+            <div className="relative w-full md:w-[400px] lg:w-[480px] xl:w-[550px]">
+  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+  <input
+    type="text"
+    placeholder="Search products..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="w-full pl-12 pr-4 py-4 text-lg bg-white rounded-2xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 shadow-sm"
+  />
+</div>
+
 
             {/* Category and Country Filters Group */}
-            <div className="flex flex-col space-y-4 w-full md:w-auto">
+            <div className="grid md:grid-cols-2 gap-6 w-full">
               {/* Category Filters */}
-              <div className="flex flex-col items-center space-y-2 md:flex-row md:space-x-6 w-full md:w-auto">
+               <div className="flex flex-col items-start space-y-2">
                 <div className="flex items-center space-x-2">
                   <Filter className="w-6 h-6 text-gray-600" />
                   <span className="text-xl font-semibold text-gray-800">Category:</span>
@@ -398,7 +386,7 @@ const ProductsPage = () => {
               </div>
 
               {/* Country Filters - NEW PLACEMENT */}
-              <div className="flex flex-col items-center space-y-2 md:flex-row md:space-x-6 w-full md:w-auto pt-4 border-t border-gray-200 md:border-t-0 md:pt-0"> {/* Added top border for visual separation on small screens */}
+               <div className="flex flex-col items-start space-y-2">
                 <div className="flex items-center space-x-2">
                   <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
                   <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
@@ -488,11 +476,13 @@ const ProductsPage = () => {
                           );
                         })}
                       </div>
-                      <button
-                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 rounded-xl font-semibold hover:shadow-md transition mt-4"
-                      >
-                        Request Quote
-                      </button>
+                     <Link
+  to="/contact"
+  className="block text-center w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 rounded-xl font-semibold hover:shadow-md transition mt-4"
+>
+  Request Quote
+</Link>
+
                     </div>
                   </div>
                 );

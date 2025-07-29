@@ -31,16 +31,16 @@ const closeModal = () => {
 
 
   const jobs = [
-{
-  id: 1,
-  title: "Sales Executive",
-  location: "Vietnam",
-  type: "Full-time",
-  posted: "2 days ago",
-  required: 3,
-  urgent: true,
-  description: "Responsible for achieving sales targets and managing client relationships.",
-  fullDescription: `As a Sales Executive, you will be responsible for:
+  {
+    id: 1,
+    title: "Sales Executive",
+    location: "Vietnam",
+    type: "Full-time",
+    posted: "2 days ago",
+    required: 3,
+    urgent: true,
+    description: "Responsible for achieving sales targets and managing client relationships.",
+    fullDescription: `As a Sales Executive, you will be responsible for:
 • Developing a customer approach plan for all products based on the company's orientation, goals, and customer data.
 • Exploring new customer sources through meetings, introductions, and consultations.
 • Reporting customer feedback under your responsibility to help the company adjust and develop strategies.
@@ -49,18 +49,17 @@ const closeModal = () => {
 • Ensuring achievement of the company’s sales targets.
 • Reporting on customer approach status and ongoing orders.
 • Performing additional tasks as assigned by management.`
-},
-
+  },
   {
-  id: 2,
-  title: "General Admin",
-  location: "Vietnam",
-  type: "Full-time",
-  posted: "1 week ago",
-  required: 1,
-  urgent: true,
-  description: "Provide general administrative support and ensure smooth daily operations.",
-  fullDescription: `As a General Admin, you will be responsible for:
+    id: 2,
+    title: "General Admin",
+    location: "Vietnam",
+    type: "Full-time",
+    posted: "1 week ago",
+    required: 1,
+    urgent: true,
+    description: "Provide general administrative support and ensure smooth daily operations.",
+    fullDescription: `As a General Admin, you will be responsible for:
 • Providing general administrative support including filing, data entry, typing, and assisting with communications and paperwork.
 • Managing diaries, travel arrangements, visitors, reception, and telephone duties.
 • Assisting the Line Manager in implementing improvements and necessary changes.
@@ -75,26 +74,49 @@ const closeModal = () => {
 • Following all company policies and procedures.
 • Interacting and cooperating with colleagues, suppliers, and clients/customers.
 • Performing other tasks as required by the management.`
-},
+  },
   {
-  id: 3,
-  title: "Purchase Admin",
-  location: "Vietnam",
-  type: "Full-time",
-  posted: "3 days ago",
-  required: 1,
-  urgent: true,
-  description: "Support procurement activities and handle purchasing-related admin tasks.",
-  fullDescription: `As a Purchasing Admin, you will be responsible for:
+    id: 3,
+    title: "Purchase Admin",
+    location: "Vietnam",
+    type: "Full-time",
+    posted: "3 days ago",
+    required: 1,
+    urgent: true,
+    description: "Support procurement activities and handle purchasing-related admin tasks.",
+    fullDescription: `As a Purchasing Admin, you will be responsible for:
 • Preparing purchasing documents and obtaining quotes.
 • Creating and maintaining accurate sales and purchasing reports.
 • Developing and improving internal processes for procurement and related departments.
 • Sourcing suppliers, comparing quotations, and analyzing offers to ensure best value.
 • Performing general office administration duties.
 • Carrying out other tasks as required by the management.`
-}
-
+  },
+  {
+    id: 4,
+    title: "Delivery Man",
+    location: "Vietnam",
+    type: "Full-time",
+    posted: "Today",
+    required: 2,
+    urgent: true,
+    description: "Handle safe and timely delivery of goods and assist in warehouse operations.",
+    fullDescription: `As a Delivery Man, you will be responsible for:
+• Receiving delivery orders from the manager.
+• Checking and comparing the name, quantity, and quality of goods before delivery.
+• Packing goods carefully to avoid damage during transportation.
+• Transporting goods to the correct customer address, ensuring on-time and safe delivery.
+• Signing and handing over complete invoices and documents to the customer and manager.
+• Reporting delivery results and goods status if problems arise.
+• Maintaining delivery vehicles, cleaning them periodically, and reporting any damage.
+• Supporting import/export of goods: classifying and counting according to import/export vouchers.
+• Arranging goods in the warehouse according to correct location, type, and regulations.
+• Ensuring the warehouse area is clean, safe, and unobstructed.
+• Participating in periodic or ad hoc inventory of goods.
+• Performing other tasks as assigned by the manager.`
+  }
 ];
+
 
 
 
@@ -163,9 +185,8 @@ const closeModal = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-teal-50/50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-100 to-teal-100 px-6 py-3 rounded-full mb-6 border border-emerald-200/50 animate-bounce-in">
-              <Briefcase className="w-5 h-5 text-emerald-600" />
-              <span className="text-emerald-700 font-semibold">Join Our Team</span>
+            <div className="inline-flex items-center">
+              
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
@@ -202,51 +223,7 @@ const closeModal = () => {
             </p>
           </div>
 
-          {/* Search and Filters */}
-          <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-200/50 mb-12 animate-fade-in-up delay-400">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search jobs..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 hover-lift"
-                />
-              </div>
-              
-              <select
-                value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 hover-lift"
-              >
-                {departments.map((dept) => (
-                  <option key={dept.id} value={dept.id}>
-                    {dept.name} ({dept.count})
-                  </option>
-                ))}
-              </select>
-              
-              <select
-                value={selectedLocation}
-                onChange={(e) => setSelectedLocation(e.target.value)}
-                className="w-full px-4 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 hover-lift"
-              >
-                {locations.map((location) => (
-                  <option key={location.id} value={location.id}>
-                    {location.name}
-                  </option>
-                ))}
-              </select>
-              
-              <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-xl font-semibold btn-animate hover-glow flex items-center justify-center space-x-2">
-                <Filter className="w-5 h-5" />
-                <span>Filter Jobs</span>
-              </button>
-            </div>
-          </div>
-
+          
           {/* Job Listings */}
           <div className="space-y-6 stagger-children">
             {filteredJobs.map((job) => (
@@ -275,10 +252,7 @@ const closeModal = () => {
                         <Clock className="w-4 h-4" />
                         <span>{job.type}</span>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <DollarSign className="w-4 h-4" />
-                        <span>{job.salary}</span>
-                      </div>
+                      
                       <div className="flex items-center space-x-2">
   <Users className="w-4 h-4" />
   <span>{job.required} required</span>
@@ -310,9 +284,7 @@ const closeModal = () => {
 
 </div>
 
-                    <div className="text-center text-sm text-gray-500">
-                      Posted {job.posted}
-                    </div>
+                    
                   </div>
                 </div>
               </div>

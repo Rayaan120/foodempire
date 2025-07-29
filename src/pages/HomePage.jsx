@@ -132,7 +132,8 @@ const HomePage = () => {
   <img
   src="/Images/hero-bg.png"
   alt="Hero Background"
-  className="absolute inset-0 z-0 w-full h-full object-cover sm:object-contain lg:object-cover object-right"
+  className="absolute inset-0 z-0 w-full h-full object-cover object-center sm:object-contain lg:object-cover"
+
 />
 
   
