@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Truck, Shield, Clock, Phone, Mail, MapPin, CheckCircle, Users, Award, Globe, ArrowRight, Play, TrendingUp, Zap, Target, ChevronRight, Quote, Leaf, Award as AwardIcon, Sparkles, Eye, Heart, ThumbsUp } from 'lucide-react';
-
+import GlobalToVietnamMap from '../components/GlobalToVietnamMap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -374,7 +374,8 @@ const HomePage = () => {
         </div>
       </div>
     </section>
-          
+          <GlobalToVietnamMap />
+
 
       {/* CTA Section */}
       <section 
