@@ -128,19 +128,22 @@ const HomePage = () => {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
+     <section className="relative flex items-center justify-start min-h-screen bg-white overflow-hidden">
+  {/* Background image */}
   <img
-  src="/Images/hero-bg.png"
-  alt="Hero Background"
-  className="absolute inset-0 z-0 w-full h-full object-cover object-center sm:object-contain lg:object-cover"
+    src="/Images/hero-bg.png"
+    alt="Hero Background"
+    className="absolute inset-0 z-0 w-full h-full object-cover object-right"
+  />
 
-/>
+  {/* Optional: gradient on mobile for readability */}
+  <div className="absolute inset-0 bg-gradient-to-l from-white via-white/70 to-transparent md:bg-none z-10"></div>
 
-  
-  <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col items-start justify-center min-h-screen text-left">
+  {/* Content */}
+  <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col justify-center min-h-screen">
     <div className="max-w-2xl">
-      <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
-        <span className="text-green-600">Delivering Finest</span> <br />
+      <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        <span className="text-green-600">Delivering Finest</span><br />
         Beef, Lamb, Fries & Other Products
       </h1>
       <p className="text-lg md:text-xl text-gray-700 mb-8">
@@ -156,6 +159,7 @@ const HomePage = () => {
     </div>
   </div>
 </section>
+
 
 
 

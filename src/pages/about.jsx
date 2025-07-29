@@ -33,7 +33,7 @@ const AboutPage = () => {
     role: "Chief Executive Officer",
     experience: "18+ years of experience",
     image: "/Images/alishan.jpg",
-    bio: "Experienced executive in the food industry, known for driving growth and leading high-performing teams at top global companies."
+    bio: "Experienced executive in the multiple industries, known for driving growth and leading high-performing teams at top global companies."
   },
   {
     name: "Truong Thi Thu Lieu",
@@ -424,7 +424,7 @@ const AboutPage = () => {
   {/* Greek Souvlaki */}
   <div className="flex items-center space-x-3">
     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth"></div>
-    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-24 h-24 object-contain rounded-sm" />
+    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-16 h-16 object-contain rounded-sm" />
     <span className="text-gray-700">
       <strong>Greek Souvlaki</strong> — European-based food brand with a focus on refined taste and quality
     </span>
