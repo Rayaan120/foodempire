@@ -129,13 +129,12 @@ const HomePage = () => {
     <div className="relative">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
- <div 
-  className="absolute inset-0 z-0 bg-no-repeat bg-right bg-contain lg:bg-cover"
-  style={{ backgroundImage: "url('/Images/hero-bg.png')" }} // or jpg depending on your rename
-></div>
-
-
-
+  <img
+    src="/Images/hero-bg.png"
+    alt="Hero Background"
+    className="absolute inset-0 z-0 w-full h-full object-cover sm:object-contain lg:object-cover"
+  />
+  
   <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col items-start justify-center min-h-screen text-left">
     <div className="max-w-2xl">
       <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
