@@ -462,7 +462,7 @@ const inquiryTypes = [
           Nha Trang City, Khanh Hoa Province
         </p>
         <a
-          href="https://www.google.com/maps/place/37+Tr%E1%BA%A7n+Quang+Kh%E1%BA%A3i,+L%E1%BB%99c+Th%E1%BB%8D,+Nha+Trang,+Kh%C3%A1nh+H%C3%B2a+650000,+Vietnam/@12.2332643,109.1936006,17z/data=!3m1!4b1!4m6!3m5!1s0x31706764eff7c72d:0xece8e725defcfa6c!8m2!3d12.2332643!4d109.1961755!16s%2Fg%2F11gh_74wq9?entry=ttu&g_ep=EgoyMDI1MDcyMi4wIKXMDSoASAFQAw%3D%3D"
+          href="https://www.google.com/maps/place/12%C2%B012'53.9%22N+109%C2%B011'06.5%22E/@12.2149722,109.182564,17z/data=!3m1!4b1!4m4!3m3!8m2!3d12.2149722!4d109.1851389?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"

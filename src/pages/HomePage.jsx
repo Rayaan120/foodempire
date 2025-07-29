@@ -130,10 +130,11 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
   <img
-    src="/Images/hero-bg.png"
-    alt="Hero Background"
-    className="absolute inset-0 z-0 w-full h-full object-cover sm:object-contain lg:object-cover"
-  />
+  src="/Images/hero-bg.png"
+  alt="Hero Background"
+  className="absolute inset-0 z-0 w-full h-full object-cover sm:object-contain lg:object-cover object-right"
+/>
+
   
   <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col items-start justify-center min-h-screen text-left">
     <div className="max-w-2xl">
