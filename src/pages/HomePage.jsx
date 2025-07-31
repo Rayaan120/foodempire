@@ -226,10 +226,14 @@ const HomePage = () => {
 </div>
 
 
-                  <button className="mt-8 group/btn flex items-center space-x-2 text-gray-700 hover:text-green-600 font-semibold hover-scale">
-                    <span>Learn More</span>
-                    <ChevronRight className="w-5 h-5 group-hover/btn:translate-x-2 group-hover/btn:scale-110 transition-all duration-300" />
-                  </button>
+                 <Link
+  to="/products"
+  className="mt-8 group/btn flex items-center space-x-2 text-gray-700 hover:text-green-600 font-semibold hover-scale"
+>
+  <span>Learn More</span>
+  <ChevronRight className="w-5 h-5 group-hover/btn:translate-x-2 group-hover/btn:scale-110 transition-all duration-300" />
+</Link>
+
                 </div>
               </div>
             ))}

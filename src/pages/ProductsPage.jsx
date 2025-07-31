@@ -11,8 +11,8 @@ const ProductsPage = () => {
   const categories = [
     { id: 'all', name: 'All Items', count: 19 },
     { id: 'beef', name: 'Beef', count: 15 },
-    { id: 'lamb', name: 'Lamb', count: 2 },
-    { id: 'fries', name: 'French Fries', count: 1 },
+    { id: 'lamb', name: 'Lamb', count: 1 },
+    { id: 'fries', name: 'French Fries', count: 2 },
     { id: 'mayonnaise', name: 'Mayonnaise', count: 1 }
   ];
 
@@ -340,7 +340,7 @@ const ProductsPage = () => {
             </h1>
 
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-              Discover our multiple finest specialties: finest beef cuts, tender lamb, french fries, and many more—sourced from top suppliers and delivered with precision across fresh, frozen, and specialty categories.
+              Discover our multiple finest specialties: finest beef cuts, tender lamb, french fries, and many more — sourced from top suppliers and delivered with precision across fresh, frozen, and specialty categories.
             </p>
           </div>
 
@@ -386,31 +386,33 @@ const ProductsPage = () => {
               </div>
 
               {/* Country Filters - NEW PLACEMENT */}
-               <div className="flex flex-col items-start space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
-                  <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
-                </div>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {uniqueCountries.map((country) => (
-                    <button
-                      key={country}
-                      onClick={() => {
-                        const valueToSet = country === 'all' ? 'all' : country.toLowerCase();
-                        setSelectedCountry(valueToSet);
-                      }}
-                      className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                        selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
-                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow'
-                          : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
-                      }`}
-                    >
-                      {country === 'all' ? 'All Countries' : country}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+               {/* Country Filters - NEW PLACEMENT */}
+<div className="flex flex-col items-start space-y-2">
+  <div className="flex items-center space-x-2">
+    <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
+    <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
+  </div>
+  <div className="flex flex-wrap justify-center gap-2">
+    {uniqueCountries.map((country) => (
+      <button
+        key={country}
+        onClick={() => {
+          const valueToSet = country === 'all' ? 'all' : country.toLowerCase();
+          setSelectedCountry(valueToSet);
+        }}
+        // 👇 MODIFIED LINE: Classes now match the Category buttons for consistent size and style.
+        className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${
+          selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
+            ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
+            : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
+        }`}
+      >
+        {country === 'all' ? 'All Countries' : country}
+      </button>
+    ))}
+  </div>
+</div>
+</div>
 
            {/* Global Clear Filter Button */}
             {(searchTerm !== '' || selectedCategory !== 'all' || selectedCountry !== 'all') && ( // Updated condition
@@ -506,6 +508,12 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
+            {/* Disclaimer */}
+<section className="pb-10 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+  <p className="max-w-4xl mx-auto">
+    <strong>Disclaimer:</strong> Product images are for general reference only. The actual product may vary in appearance and may not fully resemble what is shown.
+  </p>
+</section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -530,6 +538,7 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
+      
     </div>
   );
 };

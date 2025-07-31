@@ -292,7 +292,8 @@ const closeModal = () => {
           </div>
               {isModalOpen && activeJob && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
-    <div className="bg-white max-w-2xl w-full p-8 rounded-2xl shadow-2xl relative animate-fade-in-up">
+    <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-2xl relative animate-fade-in-up">
+
       <button
         onClick={closeModal}
         className="absolute top-4 right-4 text-gray-600 hover:text-black text-xl"

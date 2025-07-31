@@ -82,7 +82,7 @@ const AboutPage = () => {
   const stats = [
   
   { number: "Timely", label: " Delivery ", icon: <Clock className="w-8 h-8" /> },
-  { number: "Multiple", label: "Menu Items Available", icon: <Menu className="w-8 h-8" /> },
+  { number: "Multiple", label: "Product Items Available", icon: <Menu className="w-8 h-8" /> },
   { number: "100%", label: "Quality Guaranteed", icon: <CheckCircle className="w-8 h-8" /> }
 ];
 
@@ -417,14 +417,18 @@ const AboutPage = () => {
     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth"></div>
     <img src="/Images/bluefocus.png" alt="Blue Focus Logo" className="w-24 h-24 object-contain rounded-sm" />
     <span className="text-gray-700">
-      <strong>Blue Focus</strong> — Dubai, established in 2002, operating across multiple industries
+      <strong>Blue Focus</strong> — Dubai, established in 2012, operating across multiple industries
     </span>
   </div>
 
   {/* Greek Souvlaki */}
   <div className="flex items-center space-x-3">
     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth"></div>
-    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-16 h-16 object-contain rounded-sm" />
+   <div className="w-24 h-24 flex items-center justify-center">
+  <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-16 h-16 object-contain rounded-sm" />
+</div>
+
+
     <span className="text-gray-700">
       <strong>Greek Souvlaki</strong> — European-based food brand with a focus on refined taste and quality
     </span>

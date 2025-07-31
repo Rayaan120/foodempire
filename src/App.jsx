@@ -8,6 +8,8 @@ import ProductsPage from './pages/ProductsPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import GlobalToVietnamMap from './components/GlobalToVietnamMap';
+import ScrollToTop from './components/ScrollToTop';
+
 
 
 
@@ -22,7 +24,7 @@ function App() {
       </div>
 
       <Navbar />
-
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />

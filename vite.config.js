@@ -4,14 +4,14 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  
+   server: {
+    host: true, // 👈 important!
+    port: 5173, // default Vite port, or change if needed
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
     }
   },
 
-  server: {
-    host: true  // ✅ This allows access via local IP
-  }
 });
