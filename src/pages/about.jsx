@@ -6,6 +6,7 @@ import { Sparkles } from 'lucide-react';
 import GlobalToVietnamMap from '../components/GlobalToVietnamMap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { BsChatDotsFill } from "react-icons/bs";
 import { useEffect } from 'react';
 
 
@@ -85,7 +86,16 @@ const AboutPage = () => {
   { number: "Multiple", label: "Product Items Available", icon: <Menu className="w-8 h-8" /> },
   { number: "100%", label: "Quality Guaranteed", icon: <CheckCircle className="w-8 h-8" /> }
 ];
+// Chatbase bot loader
+  useEffect(() => {
+    if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
 
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "-96YCJOIt5KH-ZTaX0tyA"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div className="pt-20">

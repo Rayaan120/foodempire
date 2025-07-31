@@ -27,10 +27,10 @@ const ContactPage = () => {
   e.preventDefault();
 
   emailjs.send(
-    'service_wpyjduc',
-    'template_7yi4pw8',
+    'service_n5lptmv',
+    'template_lvjxldc',
     formData,
-    '_MaMl2caEo5gsW8HH'
+    'KYTDmibC6pXtsgIw9'
   )
   .then(() => {
     setIsSubmitted(true);
@@ -198,11 +198,11 @@ const inquiryTypes = [
 
 // Chatbase bot loader
   useEffect(() => {
-    if (document.getElementById("09UYORqziZw2afP5UiUkA")) return;
+    if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
 
     const script = document.createElement("script");
     script.src = "https://www.chatbase.co/embed.min.js";
-    script.id = "09UYORqziZw2afP5UiUkA"; // Replace with your actual bot ID if needed
+    script.id = "-96YCJOIt5KH-ZTaX0tyA"; // Replace with your actual bot ID if needed
     script.defer = true;
     document.body.appendChild(script);
   }, []);

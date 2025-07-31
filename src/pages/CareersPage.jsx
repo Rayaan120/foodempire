@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, MapPin, Clock, DollarSign, ArrowRight, Search, Filter, Briefcase, Heart, Zap, Target, Award, Globe, CheckCircle, Star, TrendingUp } from 'lucide-react';
-
+import { useEffect } from "react";
 const CareersPage = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('all');
@@ -177,7 +177,16 @@ const closeModal = () => {
                          job.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesDepartment && matchesLocation && matchesSearch;
   });
+// Chatbase bot loader
+  useEffect(() => {
+    if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
 
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "-96YCJOIt5KH-ZTaX0tyA"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <div className="pt-20">
       {/* Hero Section */}

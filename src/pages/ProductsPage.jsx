@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Leaf, Shield, Truck, Thermometer, Award, CheckCircle, ArrowRight, Filter, Search, Star, Globe, Zap } from 'lucide-react';
-
+import { BsChatDotsFill } from "react-icons/bs";
+import { useEffect } from "react";
 const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -317,7 +318,16 @@ const ProductsPage = () => {
       />
     ));
   };
+// Chatbase bot loader
+  useEffect(() => {
+    if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
 
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "-96YCJOIt5KH-ZTaX0tyA"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <div className="pt-20">
       {/* Hero Section */}
