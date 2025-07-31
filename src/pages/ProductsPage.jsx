@@ -8,7 +8,7 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   // Re-added: Initialize selectedCountry to 'all' to show all products by default
   const [selectedCountry, setSelectedCountry] = useState('all');
-
+// s
   const categories = [
     { id: 'all', name: 'All Items', count: 19 },
     { id: 'beef', name: 'Beef', count: 15 },
