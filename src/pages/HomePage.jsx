@@ -5,7 +5,7 @@ import GlobalToVietnamMap from '../components/GlobalToVietnamMap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { BsChatDotsFill } from "react-icons/bs";
-import { useEffect } from "react";
+
 
 
 const HomePage = () => {
@@ -124,16 +124,29 @@ const HomePage = () => {
       />
     ));
   };
-// Chatbase bot loader
-  useEffect(() => {
-    if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
+// Chatbase Bot Integration
+useEffect(() => {
+  // Prevent re-initialization
+  if (document.getElementById("BCtbFD6-ddUfpo4BMU8U7")) return;
 
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-    script.id = "-96YCJOIt5KH-ZTaX0tyA"; // Replace with your actual bot ID if needed
-    script.defer = true;
-    document.body.appendChild(script);
-  }, []);
+  // Initialize Chatbase global config
+  window.chatbaseConfig = {
+    chatbotId: "BCtbFD6-ddUfpo4BMU8U7", // ✅ Your bot ID here
+  };
+
+  // Create script element
+  const script = document.createElement("script");
+  script.src = "https://www.chatbase.co/embed.min.js";
+  script.id = "BCtbFD6-ddUfpo4BMU8U7";
+  script.defer = true;
+  document.body.appendChild(script);
+
+  return () => {
+    // Optional cleanup if component unmounts
+    document.getElementById("BCtbFD6-ddUfpo4BMU8U7")?.remove();
+  };
+}, []);
+
   return (
     <div className="relative">
       {/* Hero Section */}

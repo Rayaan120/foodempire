@@ -319,7 +319,7 @@ const inquiryTypes = [
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent Successfully!</h3>
                   <p className="text-gray-600 mb-6">
-                    Thank you for contacting us. Our team will review your message and respond within 2 hours.
+                    Thank you for contacting us. Our team will review your message and respond within business hours.
                   </p>
                   <button 
                     onClick={() => setIsSubmitted(false)}

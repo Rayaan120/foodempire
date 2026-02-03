@@ -114,6 +114,30 @@ const closeModal = () => {
 • Ensuring the warehouse area is clean, safe, and unobstructed.
 • Participating in periodic or ad hoc inventory of goods.
 • Performing other tasks as assigned by the manager.`
+  },
+  {
+    id: 5,
+    title: "Operations Executive",
+    location: "Vietnam",
+    type: "Full-time",
+    posted: "Today",
+    required: 1,
+    urgent: true,
+    description: "Manage all warehouse operations: import-export, inventory, storage control, and order preparation.",
+    fullDescription: `As an Operations Executive, you will be responsible for:
+    • Managing all warehouse operations: import - export - inventory, storage control, cutting - packaging, order preparation and delivery coordination.
+    • Supervising and arranging daily work of warehouse staff and supporting related departments to ensure progress.
+    • Monitoring and updating warehouse inventory data, making additional plans when necessary.
+    • Proposing program improvements to achieve optimal performance and reduce costs.
+    • Collaborating closely with departments (Sales, Finance, HR, Purchasing) to ensure smooth operations.
+    • Managing budgets, operating costs, and identifying cost-saving methods.
+    • Ensuring full compliance with company regulations, laws, and standards in warehouse operations.
+    • Supporting job analysis, planning, and training.
+    • Monitoring customer feedback and proposing solutions to improve service and quality.
+    • Evaluating suppliers, logistics partners, and proposing improvements to the supply chain.
+    • Preparing reports on performance and work efficiency for managers.
+    • Participating in crisis management and proposing risk prevention plans.
+    • Performing other tasks as required by Management.`
   }
 ];
 

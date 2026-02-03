@@ -8,83 +8,84 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   // Re-added: Initialize selectedCountry to 'all' to show all products by default
   const [selectedCountry, setSelectedCountry] = useState('all');
-// s
+  // s
   const categories = [
-    { id: 'all', name: 'All Items', count: 19 },
-    { id: 'beef', name: 'Beef', count: 15 },
+    { id: 'all', name: 'All Items', count: 23 },
+    { id: 'beef', name: 'Beef', count: 12 },
+    { id: 'fries', name: 'French Fries', count: 3 },
     { id: 'lamb', name: 'Lamb', count: 1 },
-    { id: 'fries', name: 'French Fries', count: 2 },
-    { id: 'mayonnaise', name: 'Mayonnaise', count: 1 }
+    { id: 'cheese', name: 'Cheese', count: 2 },
+    { id: 'butter_margarine', name: 'Butter & Margarine', count: 2 },
+    { id: 'others', name: 'Others', count: 3 }
   ];
 
   const products = [
-    // Your existing product data goes here.
-    // Make sure your product data is consistent with countries.
-    // Example: country: "Australia", country: "Canada", country: "USA", etc.
-    // I'm omitting the full products array here for brevity, assume it's the same as before.
+    // FRENCH FRIES
     {
       id: 1,
-      name: "Shin Shank",
-      category: "beef",
-      country: "Australia",
-      description: "Premium Australian shin shank with rich flavor, perfect for slow cooking and stews.",
-      image: "/Images/shank.jpg",
-      features: ["Australia origin"],
-      gradient: "from-red-500 to-rose-600",
-      badge: "Borello",
-      rating: 4.9,
-      suppliers: 5
+      name: "Crinkle Cut Hungritos",
+      category: "fries",
+      country: "India",
+      description: "Premium crinkle-cut fries offering golden crunch outside with soft, flavorful potato interiors.",
+      image: "/Images/hungritos-crinkle.jpg",
+      features: ["India origin"],
+      gradient: "from-yellow-400 to-orange-500",
+      badge: "Hungritos",
+      rating: 4.8,
+      suppliers: 3
     },
     {
       id: 2,
-      name: "Beef Bone Brisket Bone",
-      category: "beef",
-      country: "Australia",
-      description: "Flavorful Australian brisket bone, perfect for hearty broths and soups.",
-      image: "/Images/bone.jpg",
-      features: ["Australia origin"],
-      gradient: "from-orange-500 to-red-600",
-      badge: "CAG",
-      rating: 4.8,
+      name: "Frozen Shoestring Acrispy 7×7",
+      category: "fries",
+      country: "China",
+      description: "Classic thin-cut fries delivering crisp texture, light bite, and consistent golden frying results.",
+      image: "/Images/acrispy-7x7.jpg",
+      features: ["China origin"],
+      gradient: "from-yellow-500 to-amber-600",
+      badge: "Acrispy",
+      rating: 4.7,
       suppliers: 4
     },
     {
       id: 3,
-      name: "Short Plate",
-      category: "beef",
-      country: "Australia",
-      description: "Tender Australian short plate, great for grilling and smoking with excellent marbling.",
-      image: "/Images/plate.jpg",
-      features: ["Australia origin"],
-      gradient: "from-amber-500 to-yellow-600",
-      badge: "AMG",
-      rating: 4.7,
-      suppliers: 3
+      name: "Frozen Shoestring Acrispy 10×10",
+      category: "fries",
+      country: "China",
+      description: "Straight-cut premium fries designed for crispy exteriors and fluffy, satisfying potato centers.",
+      image: "/Images/acrispy-10x10.jpg",
+      features: ["China origin"],
+      gradient: "from-amber-400 to-orange-500",
+      badge: "Acrispy",
+      rating: 4.8,
+      suppliers: 4
     },
+
+    // AUSTRALIAN BEEF
     {
       id: 4,
-      name: "PE Brisket",
+      name: "Shin Shank",
       category: "beef",
       country: "Australia",
-      description: "Premium Australian PE Brisket from Teys, ideal for low and slow cooking.",
-      image: "/Images/brisket.jpg",
+      description: "Flavor-rich beef shank delivering tender chew and deep taste, ideal for slow cooking.",
+      image: "/Images/shank.jpg",
       features: ["Australia origin"],
-      gradient: "from-green-500 to-emerald-600",
-      badge: "Teys",
+      gradient: "from-red-600 to-rose-700",
+      badge: "Premium",
       rating: 4.9,
-      suppliers: 6
+      suppliers: 5
     },
     {
       id: 5,
-      name: "Cube Roll Hokubee",
+      name: "Beef Bone Brisket Bone CAG",
       category: "beef",
       country: "Australia",
-      description: "Premium Australian cube roll from Hokubee, tender and flavorful for gourmet dishes.",
-      image: "/Images/hokubee.jpg",
+      description: "Collagen-rich marrow bones creating deep, savory stocks with silky, gelatinous texture.",
+      image: "/Images/bone.jpg",
       features: ["Australia origin"],
-      gradient: "from-purple-500 to-pink-600",
-      badge: "Hokubee",
-      rating: 5.0,
+      gradient: "from-red-500 to-orange-600",
+      badge: "CAG",
+      rating: 4.8,
       suppliers: 4
     },
     {
@@ -92,189 +93,246 @@ const ProductsPage = () => {
       name: "Beef Leg Bone",
       category: "beef",
       country: "Australia",
-      description: "Australian beef leg bone, rich in marrow and perfect for nutrient-rich broths.",
+      description: "Premium leg bones packed with marrow, producing naturally sweet, full-bodied soup bases.",
       image: "/Images/leg.jpg",
       features: ["Australia origin"],
-      gradient: "from-indigo-500 to-blue-600",
-      badge: "Okey",
+      gradient: "from-rose-500 to-pink-600",
+      badge: "Premium",
       rating: 4.8,
       suppliers: 3
     },
     {
       id: 7,
-      name: "Kilcoy AUS Beef",
+      name: "Cube Roll Hokubee",
       category: "beef",
       country: "Australia",
-      description: "Kilcoy premium Australian beef, known for superior marbling and taste.",
-      image: "/Images/AUS.jpg",
+      description: "Highly marbled Hokubee cube roll delivering buttery richness and melt-in-mouth steak texture.",
+      image: "/Images/hokubee.jpg",
       features: ["Australia origin"],
-      gradient: "from-teal-500 to-green-600",
-      badge: "Kilcoy",
-      rating: 4.9,
-      suppliers: 5
+      gradient: "from-purple-600 to-indigo-600",
+      badge: "Hokubee",
+      rating: 5.0,
+      suppliers: 4
     },
     {
       id: 8,
-      name: "Beef Striploin Hokubee 352",
+      name: "Striploin Hokubee",
       category: "beef",
       country: "Australia",
-      description: "Hokubee beef striploin with perfect marbling, ideal for steaks and grilling.",
+      description: "Juicy striploin enhanced with signature marbling for balanced richness and grilling perfection.",
       image: "/Images/352.jpg",
       features: ["Australia origin"],
-      gradient: "from-pink-500 to-rose-600",
+      gradient: "from-pink-600 to-rose-600",
       badge: "Hokubee",
-      rating: 4.9,
+      rating: 5.0,
       suppliers: 4
     },
     {
       id: 9,
-      name: "Short Plate",
+      name: "Frozen Australian Beef Rump",
       category: "beef",
-      country: "Canada",
-      description: "Canadian short plate by Excel, tender and flavorful for versatile cooking.",
-      image: "/Images/short.jpg",
-      features: ["Canada origin"],
-      gradient: "from-orange-500 to-amber-600",
-      badge: "Excel",
+      country: "Australia",
+      description: "Lean yet tender beef rump offering robust flavor and versatile performance across cooking styles.",
+      image: "/Images/rump.jpg",
+      features: ["Australia origin"],
+      gradient: "from-red-500 to-red-700",
+      badge: "Premium",
       rating: 4.7,
-      suppliers: 3
-    },
-    {
-      id: 10,
-      name: "Shortrib",
-      category: "beef",
-      country: "Canada",
-      description: "Premium Canadian shortrib from JBS, excellent for braising and slow cooking.",
-      image: "/Images/rib.jpg",
-      features: ["Canada origin"],
-      gradient: "from-yellow-500 to-orange-600",
-      badge: "JBS",
-      rating: 4.8,
-      suppliers: 4
-    },
-    {
-      id: 11,
-      name: "Topblade",
-      category: "beef",
-      country: "Canada",
-      description: "Tender Canadian topblade from JBS, perfect for steaks and roasts.",
-      image: "/Images/blade.jpg",
-      features: ["Canada origin"],
-      gradient: "from-green-500 to-teal-600",
-      badge: "JBS",
-      rating: 4.9,
       suppliers: 5
     },
     {
-      id: 12,
-      name: "Topblade Beef Chuck Boneless 2A",
+      id: 10,
+      name: "Australian Minced Beef",
+      category: "beef",
+      country: "Australia",
+      description: "High-quality minced beef with ideal fat balance, ensuring juicy burgers and flavorful dishes.",
+      image: "/Images/minced-beef-aus.jpg",
+      features: ["Australia origin"],
+      gradient: "from-red-600 to-orange-600",
+      badge: "Premium",
+      rating: 4.8,
+      suppliers: 6
+    },
+
+    // CANADIAN BEEF
+    {
+      id: 11,
+      name: "Short Rib (Bone-in)",
       category: "beef",
       country: "Canada",
-      description: "Boneless Canadian beef chuck by JBS, excellent for slow-cooked dishes.",
-      image: "/Images/2A.jpg",
+      description: "Well-marbled short ribs delivering intense beef flavor and succulent texture when grilled.",
+      image: "/Images/rib.jpg",
       features: ["Canada origin"],
-      gradient: "from-indigo-500 to-purple-600",
-      badge: "JBS",
+      gradient: "from-amber-600 to-red-600",
+      badge: "Premium",
+      rating: 4.9,
+      suppliers: 3
+    },
+    {
+      id: 12,
+      name: "Top Blade 3A Blue Ribbon",
+      category: "beef",
+      country: "Canada",
+      description: "AAA-graded top blade cut featuring superior marbling for tender steaks and barbecue excellence.",
+      image: "/Images/blade.jpg",
+      features: ["Canada origin"],
+      gradient: "from-blue-600 to-indigo-600",
+      badge: "Blue Ribbon",
+      rating: 4.9,
+      suppliers: 4
+    },
+
+    // USA BEEF
+    {
+      id: 13,
+      name: "US Beef No-Roll Swift Rib Fingers",
+      category: "beef",
+      country: "USA",
+      description: "Versatile rib fingers offering bold beef flavor, perfect for grilling or slow braising.",
+      image: "/Images/finger.jpg",
+      features: ["USA origin"],
+      gradient: "from-red-600 to-blue-700",
+      badge: "Swift",
       rating: 4.8,
       suppliers: 3
     },
     {
-      id: 13,
-      name: "Topblade",
+      id: 14,
+      name: "Clear River Farms Short Plate",
       category: "beef",
-      country: "New Zealand",
-      description: "Wilson Hellaby New Zealand topblade, known for exceptional flavor and texture.",
-      image: "/Images/zealand.jpg",
-      features: ["New Zealand origin"],
-      gradient: "from-purple-500 to-indigo-600",
-      badge: "Wilson Hellaby",
+      country: "USA",
+      description: "Thin-sliced short plate delivering buttery richness and tender bite for hotpot dishes.",
+      image: "/Images/plate.jpg",
+      features: ["USA origin"],
+      gradient: "from-blue-600 to-red-600",
+      badge: "Clear River",
       rating: 4.7,
       suppliers: 4
     },
     {
-      id: 14,
-      name: "US Beef Noroll Swift Rib Finger",
-      category: "beef",
-      country: "USA",
-      description: "Premium US rib finger from Swift, juicy and tender for gourmet dishes.",
-      image: "/Images/finger.jpg",
-      features: ["USA origin"],
-      gradient: "from-red-500 to-rose-600",
-      badge: "Swift",
-      rating: 5.0,
-      suppliers: 3
-    },
-    {
       id: 15,
-      name: "US Beef Topblade",
+      name: "USA Minced Beef",
       category: "beef",
       country: "USA",
-      description: "Swift US beef topblade, tender and flavorful, perfect for high-end recipes.",
-      image: "/Images/US.jpg",
+      description: "Premium minced beef producing juicy patties, tender crumble, and steak-like savory depth.",
+      image: "/Images/minced-beef-usa.jpg",
       features: ["USA origin"],
-      gradient: "from-amber-500 to-orange-600",
-      badge: "Swift",
+      gradient: "from-red-500 to-indigo-600",
+      badge: "Premium",
+      rating: 4.8,
+      suppliers: 5
+    },
+
+    // AUSTRALIAN LAMB
+    {
+      id: 16,
+      name: "Australian Lamb Leg Boneless",
+      category: "lamb",
+      country: "Australia",
+      description: "Naturally lean lamb leg delivering juicy texture, earthy flavor, and excellent grilling results.",
+      image: "/Images/boneless.jpg",
+      features: ["Australia origin"],
+      gradient: "from-yellow-500 to-green-600",
+      badge: "Premium",
       rating: 4.9,
       suppliers: 4
     },
 
-    // 🐑 8 Fresh Lamb Products
+    // CHEESE
     {
-      id: 16,
-      name: "Aus Lamb Leg Boneless",
-      category: "lamb",
-      country: "Australia",
-      description: "Premium Australian boneless lamb leg from Hardwicks, tender and flavorful with perfect quality.",
-      image: "/Images/boneless.jpg",
-      features: ["Australian origin"],
-      gradient: "from-yellow-500 to-orange-600",
-      badge: "Hardwicks",
+      id: 17,
+      name: "Mozzarella Cheese – Mlekpol",
+      category: "cheese",
+      country: "Poland",
+      description: "High-elasticity mozzarella offering perfect melt, golden bubbling, and mild milky flavor.",
+      image: "/Images/mlekpol.jpg",
+      features: ["Poland origin"],
+      gradient: "from-yellow-400 to-yellow-600",
+      badge: "Mlekpol",
       rating: 4.9,
-      suppliers: 6
+      suppliers: 2
     },
-    
-
-
-    // 🍟 8 French Fries Products
     {
-      id: 24,
-      name: "Frozen Shoestring Apotatoes",
-      category: "fries",
-      country: "China",
-      description: "Premium frozen shoestring potatoes from China by Apotatoes brand, perfectly cut and ready to cook.",
-      image: "/Images/apotatoes.jpg",
-      features: ["China origin"],
-      gradient: "from-orange-500 to-red-600",
-      badge: "Apotatoes",
-      rating: 4.9,
+      id: 18,
+      name: "Pizza Topping Mozzala",
+      category: "cheese",
+      country: "Poland",
+      description: "Specially formulated pizza cheese delivering consistent melt, stretch, and savory richness.",
+      image: "/Images/mozzala.jpg",
+      features: ["Poland origin"],
+      gradient: "from-yellow-500 to-orange-500",
+      badge: "Mozzala",
+      rating: 4.7,
       suppliers: 3
     },
+
+    // BUTTER & MARGARINE
     {
-      id: 25,
-      name: "Crinkle Cut Hungritos",
-      category: "fries",
-      country: "India",
-      description: "Premium crinkle cut potatoes from India by Hungritos brand, perfect texture and quality.",
-      image: "/Images/cut.jpg",
-      features: ["India origin"],
-      gradient: "from-green-500 to-teal-600",
-      badge: "Hungritos",
+      id: 19,
+      name: "Peerless AU Unsalted Butter",
+      category: "butter_margarine",
+      country: "Australia",
+      description: "Clean-tasting butter providing silky melt, balanced richness, and precise culinary control.",
+      image: "/Images/peerless-butter.jpg",
+      features: ["Australia origin"],
+      gradient: "from-yellow-300 to-yellow-500",
+      badge: "Peerless",
+      rating: 5.0,
+      suppliers: 2
+    },
+    {
+      id: 20,
+      name: "Margarine Palffy Unsalted Vivo",
+      category: "butter_margarine",
+      country: "Singapore",
+      description: "Heat-stable margarine offering excellent plasticity and reliable performance in professional baking.",
+      image: "/Images/palffy-margarine.jpg",
+      features: ["Singapore origin"],
+      gradient: "from-yellow-400 to-orange-400",
+      badge: "Vivo",
       rating: 4.6,
       suppliers: 2
     },
 
+    // OTHERS
     {
-      id: 26,
-      name: " Mayonnaise",
-      category: "mayonnaise",
+      id: 21,
+      name: "Urzante Olive Pomace Oil 5L",
+      category: "others",
+      country: "Spain",
+      description: "High smoke-point olive oil ideal for frying, delivering light texture and heat stability.",
+      image: "/Images/urzante-oil.jpg",
+      features: ["Spain origin"],
+      gradient: "from-green-500 to-emerald-700",
+      badge: "Urzante",
+      rating: 4.8,
+      suppliers: 3
+    },
+    {
+      id: 22,
+      name: "Ajinomoto Mayonnaise 3kg",
+      category: "others",
       country: "Vietnam",
-      description: "Creamy and smooth mayonnaise perfect for dips, burgers, and sandwiches.",
+      description: "Creamy mayonnaise delivering rich egg flavor and smooth consistency for versatile applications.",
       image: "/Images/mayo.jpg",
       features: ["Vietnam origin"],
-      gradient: "from-yellow-500 to-amber-600",
-      badge: "Chef's Choice",
-      rating: 4.8,
-      suppliers: 2
+      gradient: "from-yellow-100 to-yellow-400",
+      badge: "Ajinomoto",
+      rating: 4.9,
+      suppliers: 4
+    },
+    {
+      id: 23,
+      name: "Fragata Seedless Black Olives",
+      category: "others",
+      country: "Spain",
+      description: "Naturally ripe black olives offering smooth texture, mild nuttiness, and convenient seedless finish.",
+      image: "/Images/fragata-olives.jpg",
+      features: ["Spain origin"],
+      gradient: "from-gray-700 to-black",
+      badge: "Fragata",
+      rating: 4.7,
+      suppliers: 3
     }
   ];
 
@@ -318,7 +376,7 @@ const ProductsPage = () => {
       />
     ));
   };
-// Chatbase bot loader
+  // Chatbase bot loader
   useEffect(() => {
     if (document.getElementById("-96YCJOIt5KH-ZTaX0tyA")) return;
 
@@ -336,7 +394,7 @@ const ProductsPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="inline-flex items-center">
-              
+
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
@@ -358,21 +416,21 @@ const ProductsPage = () => {
           <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 mb-12 animate-fade-in-up delay-600 p-6 rounded-3xl bg-white/70 backdrop-blur-md shadow-lg border border-gray-100">
             {/* Search Input */}
             <div className="relative w-full md:w-[400px] lg:w-[480px] xl:w-[550px]">
-  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-  <input
-    type="text"
-    placeholder="Search products..."
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    className="w-full pl-12 pr-4 py-4 text-lg bg-white rounded-2xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 shadow-sm"
-  />
-</div>
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 text-lg bg-white rounded-2xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 shadow-sm"
+              />
+            </div>
 
 
             {/* Category and Country Filters Group */}
             <div className="grid md:grid-cols-2 gap-6 w-full">
               {/* Category Filters */}
-               <div className="flex flex-col items-start space-y-2">
+              <div className="flex flex-col items-start space-y-2">
                 <div className="flex items-center space-x-2">
                   <Filter className="w-6 h-6 text-gray-600" />
                   <span className="text-xl font-semibold text-gray-800">Category:</span>
@@ -382,11 +440,10 @@ const ProductsPage = () => {
                     <button
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
-                      className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${
-                        selectedCategory === category.id
-                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
-                          : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
-                      }`}
+                      className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${selectedCategory === category.id
+                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
+                        }`}
                     >
                       {category.name}
                       <span className="ml-1 text-sm opacity-80">({category.count})</span>
@@ -396,48 +453,47 @@ const ProductsPage = () => {
               </div>
 
               {/* Country Filters - NEW PLACEMENT */}
-               {/* Country Filters - NEW PLACEMENT */}
-<div className="flex flex-col items-start space-y-2">
-  <div className="flex items-center space-x-2">
-    <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
-    <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
-  </div>
-  <div className="flex flex-wrap justify-center gap-2">
-    {uniqueCountries.map((country) => (
-      <button
-        key={country}
-        onClick={() => {
-          const valueToSet = country === 'all' ? 'all' : country.toLowerCase();
-          setSelectedCountry(valueToSet);
-        }}
-        // 👇 MODIFIED LINE: Classes now match the Category buttons for consistent size and style.
-        className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${
-          selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
-            ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
-            : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
-        }`}
-      >
-        {country === 'all' ? 'All Countries' : country}
-      </button>
-    ))}
-  </div>
-</div>
-</div>
+              {/* Country Filters - NEW PLACEMENT */}
+              <div className="flex flex-col items-start space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
+                  <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
+                </div>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {uniqueCountries.map((country) => (
+                    <button
+                      key={country}
+                      onClick={() => {
+                        const valueToSet = country === 'all' ? 'all' : country.toLowerCase();
+                        setSelectedCountry(valueToSet);
+                      }}
+                      // 👇 MODIFIED LINE: Classes now match the Category buttons for consistent size and style.
+                      className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
+                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
+                        }`}
+                    >
+                      {country === 'all' ? 'All Countries' : country}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-           {/* Global Clear Filter Button */}
-            {(searchTerm !== '' || selectedCategory !== 'all' || selectedCountry !== 'all') && ( // Updated condition
-                <button
-                    onClick={() => {
-                        setSearchTerm('');
-                        setSelectedCategory('all');
-                        setSelectedCountry('all'); // Reset country filter as well
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 border border-gray-300 hover:bg-gray-100 transition-colors duration-300 mt-4 md:mt-0" /* Added mt-4 for small screens */
-                >
-                    <Zap className="w-4 h-4 text-red-500" />
-                    Clear Filters
-                </button>
-            )}
+            {/* Global Clear Filter Button */}
+            {(searchTerm !== '' || selectedCategory !== 'all' || selectedCountry !== 'all') && ( // Updated condition
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('all');
+                  setSelectedCountry('all'); // Reset country filter as well
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 border border-gray-300 hover:bg-gray-100 transition-colors duration-300 mt-4 md:mt-0" /* Added mt-4 for small screens */
+              >
+                <Zap className="w-4 h-4 text-red-500" />
+                Clear Filters
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -488,12 +544,12 @@ const ProductsPage = () => {
                           );
                         })}
                       </div>
-                     <Link
-  to="/contact"
-  className="block text-center w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 rounded-xl font-semibold hover:shadow-md transition mt-4"
->
-  Request Quote
-</Link>
+                      <Link
+                        to="/contact"
+                        className="block text-center w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 rounded-xl font-semibold hover:shadow-md transition mt-4"
+                      >
+                        Request Quote
+                      </Link>
 
                     </div>
                   </div>
@@ -518,12 +574,12 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
-            {/* Disclaimer */}
-<section className="pb-10 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-  <p className="max-w-4xl mx-auto">
-    <strong>Disclaimer:</strong> Product images are for general reference only. The actual product may vary in appearance and may not fully resemble what is shown.
-  </p>
-</section>
+      {/* Disclaimer */}
+      <section className="pb-10 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+        <p className="max-w-4xl mx-auto">
+          <strong>Disclaimer:</strong> Product images are for general reference only. The actual product may vary in appearance and may not fully resemble what is shown.
+        </p>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -548,7 +604,7 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 };
