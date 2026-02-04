@@ -388,115 +388,106 @@ const ProductsPage = () => {
   }, []);
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-teal-50/50"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <div className="inline-flex items-center">
+      {/* Crystal Dock Filter Section */}
+      <div className="sticky top-36 z-30 px-4 sm:px-6 lg:px-8 mb-12 animate-fade-in-up delay-600">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl shadow-emerald-900/5 rounded-3xl p-3 flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-500 hover:shadow-emerald-900/10 hover:bg-white/90">
 
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
-              <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                World-Class Products
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">
-                Exceptional Quality
-              </span>
-            </h1>
-
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-              Discover our multiple finest specialties: finest beef cuts, tender lamb, french fries, and many more — sourced from top suppliers and delivered with precision across fresh, frozen, and specialty categories.
-            </p>
-          </div>
-
-          {/* Search, Category, and Country Filters - Integrated Layout */}
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 mb-12 animate-fade-in-up delay-600 p-6 rounded-3xl bg-white/70 backdrop-blur-md shadow-lg border border-gray-100">
-            {/* Search Input */}
-            <div className="relative w-full md:w-[400px] lg:w-[480px] xl:w-[550px]">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            {/* 1. The Lens (Search) */}
+            <div className="relative group w-full md:w-auto md:flex-1 max-w-xs">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-300" />
+              </div>
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Search premium cuts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 text-lg bg-white rounded-2xl border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300 shadow-sm"
+                className="block w-full pl-11 pr-4 py-3 bg-gray-50/50 border-0 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all duration-300 font-medium"
               />
             </div>
 
-
-            {/* Category and Country Filters Group */}
-            <div className="grid md:grid-cols-2 gap-6 w-full">
-              {/* Category Filters */}
-              <div className="flex flex-col items-start space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Filter className="w-6 h-6 text-gray-600" />
-                  <span className="text-xl font-semibold text-gray-800">Category:</span>
-                </div>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${selectedCategory === category.id
-                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
-                        : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
-                        }`}
-                    >
+            {/* 2. The Liquid Tabs (Categories) */}
+            <div className="flex-1 w-full md:w-auto overflow-x-auto md:overflow-visible no-scrollbar">
+              <div className="flex items-center justify-center md:justify-start space-x-1 p-1 md:flex-wrap md:gap-y-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`relative px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 flex-shrink-0 ${selectedCategory === category.id
+                      ? 'text-emerald-700'
+                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100/50'
+                      }`}
+                  >
+                    {selectedCategory === category.id && (
+                      <span className="absolute inset-0 bg-emerald-100/80 rounded-xl -z-10 animate-scale-in" />
+                    )}
+                    <span className="relative flex items-center gap-2">
+                      {/* Icon logic could go here, keeping it text-clean for "Dock" look */}
                       {category.name}
-                      <span className="ml-1 text-sm opacity-80">({category.count})</span>
-                    </button>
-                  ))}
-                </div>
+                      {selectedCategory === category.id && (
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      )}
+                    </span>
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Country Filters - NEW PLACEMENT */}
-              {/* Country Filters - NEW PLACEMENT */}
-              <div className="flex flex-col items-start space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Globe className="w-6 h-6 text-gray-600" /> {/* Changed icon to Globe */}
-                  <span className="text-xl font-semibold text-gray-800">Country:</span> {/* Clearer heading */}
+            {/* 3. The Passport (Country Dropdown) */}
+            <div className="relative w-full md:w-auto flex-shrink-0 group z-50">
+              <button
+                className="w-full md:w-auto flex items-center justify-between gap-3 px-5 py-3 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300 group-hover:ring-2 group-hover:ring-emerald-500/10"
+              >
+                <div className="flex items-center gap-2 text-gray-700 font-semibold">
+                  <Globe className="w-5 h-5 text-emerald-600" />
+                  <span>{selectedCountry === 'all' ? 'Global Origin' : selectedCountry.charAt(0).toUpperCase() + selectedCountry.slice(1)}</span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-2">
+                <Filter className="w-4 h-4 text-gray-400 group-hover:text-emerald-500 transition-colors" />
+              </button>
+
+              {/* Dropdown Menu (Hover-based for desktop, Click for mobile can be added, currently CSS hover via group) */}
+              <div className="absolute right-0 top-full mt-2 w-56 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 origin-top-right overflow-hidden p-2">
+                <div className="max-h-64 overflow-y-auto custom-scrollbar">
                   {uniqueCountries.map((country) => (
                     <button
                       key={country}
-                      onClick={() => {
-                        const valueToSet = country === 'all' ? 'all' : country.toLowerCase();
-                        setSelectedCountry(valueToSet);
-                      }}
-                      // 👇 MODIFIED LINE: Classes now match the Category buttons for consistent size and style.
-                      className={`px-5 py-2 rounded-xl font-semibold text-base transition-all duration-300 ${selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
-                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg animate-glow'
-                        : 'bg-white text-gray-700 border border-gray-200 hover:border-emerald-300 hover:shadow-md hover-lift'
+                      onClick={() => setSelectedCountry(country === 'all' ? 'all' : country.toLowerCase())}
+                      className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 flex items-center justify-between ${selectedCountry === (country === 'all' ? 'all' : country.toLowerCase())
+                        ? 'bg-emerald-50 text-emerald-700'
+                        : 'text-gray-600 hover:bg-gray-50'
                         }`}
                     >
-                      {country === 'all' ? 'All Countries' : country}
+                      <span>{country === 'all' ? 'All Countries' : country}</span>
+                      {selectedCountry === (country === 'all' ? 'all' : country.toLowerCase()) && (
+                        <CheckCircle className="w-4 h-4 text-emerald-500" />
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Global Clear Filter Button */}
-            {(searchTerm !== '' || selectedCategory !== 'all' || selectedCountry !== 'all') && ( // Updated condition
+          </div>
+
+          {/* Active Filters Summary (Optional but helpful UX) */}
+          {(selectedCategory !== 'all' || selectedCountry !== 'all' || searchTerm) && (
+            <div className="flex justify-center mt-6 animate-fade-in-up">
               <button
                 onClick={() => {
                   setSearchTerm('');
                   setSelectedCategory('all');
-                  setSelectedCountry('all'); // Reset country filter as well
+                  setSelectedCountry('all');
                 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 border border-gray-300 hover:bg-gray-100 transition-colors duration-300 mt-4 md:mt-0" /* Added mt-4 for small screens */
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 text-sm font-medium hover:bg-red-100 transition-colors"
               >
-                <Zap className="w-4 h-4 text-red-500" />
-                Clear Filters
+                <Zap className="w-4 h-4" />
+                <span>Reset Filters</span>
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      </section>
+      </div>
 
       {/* Products Grid */}
       <section className="py-20 bg-gradient-to-br from-white to-gray-50">
