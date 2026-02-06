@@ -70,7 +70,6 @@ const ProductsPage = () => {
       description: "Flavor-rich beef shank delivering tender chew and deep taste, ideal for slow cooking.",
       image: "/Images/shank.jpg",
       features: ["Australia origin"],
-      gradient: "from-red-600 to-rose-700",
       badge: "Premium",
       rating: 4.9,
       suppliers: 5
@@ -505,7 +504,7 @@ const ProductsPage = () => {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover"
                       />
                       {/* Gradient overlay removed for white background */}
                     </div>
