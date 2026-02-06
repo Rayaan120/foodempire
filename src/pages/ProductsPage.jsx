@@ -170,7 +170,7 @@ const ProductsPage = () => {
     },
     {
       id: 12,
-      name: "Top Blade 3A Blue Ribbon",
+      name: "Top Blade",
       category: "beef",
       country: "Canada",
       description: "AAA-graded top blade cut featuring superior marbling for tender steaks and barbecue excellence.",
