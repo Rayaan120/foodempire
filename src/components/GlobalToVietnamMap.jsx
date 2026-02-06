@@ -6,9 +6,11 @@ const cities = [
   { name: "Australia", coords: [151.2093, -33.8688] },   // Sydney
   { name: "USA", coords: [-95.0, 37.0] },          // New York
   { name: "India", coords: [72.8777, 19.0760] },         // Mumbai
- { name: "Canada", coords: [-100.0, 56.0] },       // Toronto
+  { name: "Canada", coords: [-100.0, 56.0] },       // Toronto
   { name: "New Zealand", coords: [174.7633, -36.8485] }, // Auckland
   { name: "China", coords: [121.4737, 31.2304] },        // Shanghai
+  { name: "Spain", coords: [-3.7492, 40.4637] },        // Madrid
+  { name: "Singapore", coords: [103.8198, 1.3521] },    // Singapore
 ];
 
 
@@ -38,8 +40,8 @@ const GlobalToVietnamMap = () => {
     svg.selectAll("*").remove();
 
     const projection = d3.geoMercator()
-  .scale(120) // smaller = more zoomed out
-  .translate([width / 2, height / 1.4]); // tweak to center Asia/Australia
+      .scale(120) // smaller = more zoomed out
+      .translate([width / 2, height / 1.4]); // tweak to center Asia/Australia
 
 
     const pathGen = d3.geoPath().projection(projection);
@@ -56,7 +58,7 @@ const GlobalToVietnamMap = () => {
     cities.forEach(city => {
       const sc = projection(city.coords);
       const vc = projection(vietnamCoords);
-      const mid = [(sc[0]+vc[0])/2, (sc[1]+vc[1])/2 - 80];
+      const mid = [(sc[0] + vc[0]) / 2, (sc[1] + vc[1]) / 2 - 80];
 
       const curve = d3.line().curve(d3.curveBasis)([sc, mid, vc]);
 
@@ -106,8 +108,8 @@ const GlobalToVietnamMap = () => {
         </h2>
         <svg ref={ref}></svg>
         <p className="text-center text-gray-600 mt-6 text-lg max-w-3xl mx-auto">
-  Our global sourcing network brings the finest food products from Australia, USA, India, Canada, New Zealand, and China — all the way to Vietnam.
-</p>
+          Our global sourcing network brings the finest food products from Australia, USA, India, Canada, New Zealand, China, Spain, and Singapore — all the way to Vietnam.
+        </p>
       </div>
     </section>
   );

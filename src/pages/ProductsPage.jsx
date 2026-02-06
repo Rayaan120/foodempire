@@ -498,48 +498,59 @@ const ProductsPage = () => {
                 return (
                   <div
                     key={`${product.id}-${index}`}
-                    className="group relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden"
+                    className="group relative bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 h-full flex flex-col"
                   >
-                    <div className="relative h-64 overflow-hidden">
+                    {/* Image Container - Fixed Aspect Ratio for Alignment */}
+                    <div className="relative w-full aspect-[4/3] overflow-hidden">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-20`} />
-
-                      {/* ✨ Origin Badge */}
-                      {product.features[0]?.toLowerCase().includes("origin") && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-md backdrop-blur-sm">
-                          {product.features[0]}
-                        </div>
-                      )}
+                      <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-500`} />
                     </div>
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{product.description}</p>
-                      <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="p-6 relative flex flex-col flex-1">
+                      {/* Title & Rating */}
+                      <div className="flex justify-between items-start gap-4 mb-3">
+                        <h3 className="text-xl font-bold text-gray-900 leading-tight group-hover:text-emerald-700 transition-colors">
+                          {product.name}
+                        </h3>
+                        <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg shrink-0">
+                          <Star className="w-3.5 h-3.5 text-yellow-400 fill-current" />
+                          <span className="text-xs font-bold text-yellow-700">{product.rating}</span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-500 text-sm mb-5 leading-relaxed line-clamp-3 group-hover:text-gray-600">
+                        {product.description}
+                      </p>
+
+                      {/* Features Tags - Included Origin */}
+                      <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                         {product.features.map((feature, index) => {
-                          const isOrigin = feature.toLowerCase().includes("origin");
                           return (
                             <span
                               key={index}
-                              className={`text-xs px-3 py-1 rounded-full font-semibold
-                                ${isOrigin
-                                  ? "bg-gradient-to-r from-orange-500 to-red-500 text-white shadow"
-                                  : "bg-gray-100 text-gray-700"}`}
+                              className={`text-xs px-2.5 py-1 rounded-md font-medium border
+                                ${feature.toLowerCase().includes("origin")
+                                  ? "bg-amber-50 text-amber-700 border-amber-100"
+                                  : "bg-gray-100 text-gray-600 border-gray-200"}`}
                             >
                               {feature}
                             </span>
                           );
                         })}
                       </div>
+
+                      {/* Action Button */}
                       <Link
                         to="/contact"
-                        className="block text-center w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 rounded-xl font-semibold hover:shadow-md transition mt-4"
+                        className="flex items-center justify-center gap-2 w-full bg-gray-900 text-white py-3.5 rounded-xl font-semibold hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 group/btn mt-2"
                       >
                         Request Quote
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
 
                     </div>
@@ -547,18 +558,21 @@ const ProductsPage = () => {
                 );
               })
             ) : (
-              <div className="text-center col-span-full">
-                <h3 className="text-xl font-bold text-gray-700">No products found.</h3>
-                {/* This clear filters button is for when no products are found. The global one above is for general use. */}
+              <div className="text-center w-full py-20 col-span-full">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
+                  <Search className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+                <p className="text-gray-500 mb-6">Try adjusting your filters or search terms.</p>
                 <button
                   onClick={() => {
                     setSearchTerm("");
                     setSelectedCategory("all");
-                    setSelectedCountry("all"); // Reset country filter as well
+                    setSelectedCountry("all");
                   }}
-                  className="mt-4 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700"
+                  className="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-medium hover:bg-emerald-700 hover:shadow-lg transition-all"
                 >
-                  Clear Filters
+                  Clear All Filters
                 </button>
               </div>
             )}
