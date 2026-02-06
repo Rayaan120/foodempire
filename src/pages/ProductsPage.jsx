@@ -507,7 +507,7 @@ const ProductsPage = () => {
                         alt={product.name}
                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-500`} />
+                      {/* Gradient overlay removed for white background */}
                     </div>
 
                     <div className="p-6 relative flex flex-col flex-1">
