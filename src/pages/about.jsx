@@ -417,19 +417,39 @@ const AboutPage = () => {
                 <div className="space-y-4">
                   {/* Blue Focus */}
                   {/* Blue Focus */}
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-4">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth flex-shrink-0"></div>
-                    <img src="/Images/bluefocus.png" alt="Blue Focus Logo" className="w-28 h-28 object-contain rounded-sm flex-shrink-0" />
+
+                    <div className="w-32 h-32 flex items-center justify-center flex-shrink-0">
+                      <img
+                        src="/Images/bluefocus.png"
+                        alt="Blue Focus Logo"
+                        className="w-full h-full object-contain scale-150"
+                      />
+
+                    </div>
+
                     <span className="text-gray-700">
                       <strong>Blue Focus</strong> — Dubai, established in 2012, operating across multiple industries
                     </span>
                   </div>
 
 
+
+
+
                   {/* Greek Souvlaki */}
-                  <div className="flex items-center space-x-3 pl-[0.15rem] sm:pl-0">
+                  <div className="flex items-center space-x-4">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-smooth flex-shrink-0"></div>
-                    <img src="/Images/greek-logo.png" alt="Greek Souvlaki Logo" className="w-28 h-28 object-contain rounded-sm flex-shrink-0" />
+
+                    <div className="w-20 h-20 flex items-center justify-center flex-shrink-0">
+                      <img
+                        src="/Images/greek-logo.png"
+                        alt="Greek Souvlaki Logo"
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+
                     <span className="text-gray-700">
                       <strong>Greek Souvlaki</strong> — European-based food brand with a focus on refined taste and quality
                     </span>
